@@ -6,5 +6,7 @@
 
     <Application.Styles>
         <FluentTheme />
+        <StyleInclude Source="avares://EmailClient/Styles.axaml"/>
     </Application.Styles>
+             
 </Application>

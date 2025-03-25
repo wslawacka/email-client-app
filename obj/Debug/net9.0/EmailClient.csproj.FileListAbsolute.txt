@@ -64,3 +64,4 @@
 /Users/weronikaslawacka/Documents/human-computer-interaction/EmailClient/obj/Debug/net9.0/EmailCli.6855ED27.Up2Date
 /Users/weronikaslawacka/Documents/human-computer-interaction/EmailClient/obj/Debug/net9.0/EmailClient.genruntimeconfig.cache
 /Users/weronikaslawacka/Documents/human-computer-interaction/EmailClient/obj/Debug/net9.0/ref/EmailClient.dll
+/Users/weronikaslawacka/Documents/human-computer-interaction/EmailClient/obj/Debug/net9.0/EmailClient.sourcelink.json
