@@ -1,0 +1,63 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="EmailClient.MainWindow"
+        Title="EmailClient">
+    
+    <DockPanel>
+        
+        <StackPanel DockPanel.Dock="Top" Orientation="Horizontal" Background="Yellow">
+            <!-- display the main menu of the application -->
+            <Menu>
+                <MenuItem Header="File">
+                    <MenuItem Header="Exit"></MenuItem>
+                </MenuItem>
+                <MenuItem Header="Message">
+                    <MenuItem Header="New static"></MenuItem>
+                    <MenuItem Header="Edit static"></MenuItem>
+                    <MenuItem Header="New"></MenuItem>
+                    <MenuItem Header="Edit"></MenuItem>
+                    <MenuItem Header="Delete"></MenuItem>
+                </MenuItem>
+            </Menu>
+            <!-- search mails -->
+            <TextBox></TextBox>
+            <!-- filter mails -->
+            <ComboBox></ComboBox>
+        </StackPanel>
+        
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="3*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            
+            <StackPanel Grid.Column="0" Background="Aqua">
+                <!-- display mailboxes and their folders -->
+                <TreeView>
+                    
+                </TreeView>
+            </StackPanel>
+            
+            <StackPanel Grid.Column="1" Background="Firebrick">
+                <!-- display a list of messages of the currently selected folder -->
+                <ListBox>
+                    
+                </ListBox>
+            </StackPanel>
+            
+            <Grid Grid.Column="2" Background="Chartreuse">
+                <!-- display the content of selected mail -->
+                <TextBlock>
+                    
+                </TextBlock>
+            </Grid>
+            
+        </Grid>
+        
+        </DockPanel>
+    
+</Window>
