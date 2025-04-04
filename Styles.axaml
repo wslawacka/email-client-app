@@ -4,11 +4,10 @@
     </Style>
     <Style Selector="MenuItem">
         <Setter Property="Foreground" Value="Black"/> 
-        <Setter Property="Margin" Value="0, 0, 20, 0"></Setter>
+        <Setter Property="Margin" Value="0, 0, 10, 0"></Setter>
     </Style>
     <Style Selector="TextBlock.mail-content">
         <Setter Property="Foreground" Value="Black"></Setter>
-        <Setter Property="TextAlignment" Value="Justify"></Setter>
-        <Setter Property="Padding" Value="40, 40, 40, 0"></Setter>
+        <Setter Property="Padding" Value="40, 20, 40, 0"></Setter>
     </Style>
 </Styles>

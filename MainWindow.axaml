@@ -4,7 +4,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="EmailClient.MainWindow"
-        Title="EmailClient">
+        Title="EmailClient"
+        MinWidth="860"
+        MinHeight="540">
     
     <DockPanel>
         <Grid DockPanel.Dock="Top"  Background="Yellow" Height="40">
@@ -14,7 +16,7 @@
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <!-- display the main menu of the application -->
-            <Menu Grid.Column="0" Padding="30,0, 0, 0">
+            <Menu Grid.Column="0" Padding="10,0, 0, 0">
                 <MenuItem Header="File">
                     <MenuItem Header="Exit"></MenuItem>
                 </MenuItem>
@@ -29,9 +31,9 @@
                 <MenuItem Header="Help"></MenuItem>
             </Menu>
             <!-- search mails -->
-            <TextBox Grid.Column="1" Width="240" Watermark="Search" VerticalAlignment="Center" Margin="40,0"></TextBox>
+            <TextBox Grid.Column="1" MinWidth="190" Watermark="Search" VerticalAlignment="Center" Margin="40,0"></TextBox>
             <!-- filter mails -->
-            <ComboBox Grid.Column="2" Width="200" VerticalAlignment="Center"></ComboBox>
+            <ComboBox Grid.Column="2" MinWidth="160" VerticalAlignment="Center" Margin="0, 0, 40,0"></ComboBox>
         </Grid>
         
         <Grid>
@@ -65,7 +67,7 @@
             
             <StackPanel Grid.Column="1" Background="Firebrick">
                 <!-- display a list of messages of the currently selected folder -->
-                <ListBox>
+                <ListBox Margin="10, 20, 0, 0" Background="Firebrick">
                     <ListBoxItem Content="Folder"></ListBoxItem>
                     <ListBoxItem Content="Folder"></ListBoxItem>
                     <ListBoxItem Content="Folder"></ListBoxItem>
