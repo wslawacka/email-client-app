@@ -18,7 +18,7 @@
             <!-- display the main menu of the application -->
             <Menu Grid.Column="0" Padding="10,0, 0, 0">
                 <MenuItem Header="File">
-                    <MenuItem Header="Exit"></MenuItem>
+                    <MenuItem Name="Exit" Click="Exit_OnClick" Header="Exit"></MenuItem>
                 </MenuItem>
                 <MenuItem Header="View"></MenuItem>
                 <MenuItem Header="Message">
@@ -151,13 +151,14 @@
             
             <StackPanel Grid.Column="1" Background="Firebrick">
                 <!-- display a list of messages of the currently selected folder -->
-                <ListBox Margin="10, 20, 0, 0" Background="Firebrick">
-                    <ListBoxItem Content="Folder"></ListBoxItem>
-                    <ListBoxItem Content="Folder"></ListBoxItem>
-                    <ListBoxItem Content="Folder"></ListBoxItem>
-                    <ListBoxItem Content="Folder"></ListBoxItem>
-                    <ListBoxItem Content="Folder"></ListBoxItem>
-                    <ListBoxItem Content="Folder"></ListBoxItem>
+                <ListBox Margin="10, 20, 0, 0" Background="Firebrick" Name="MessageListBox" 
+                         DoubleTapped="MessageListBox_OnDoubleTapped">
+                    <ListBoxItem Content="Message1"></ListBoxItem>
+                    <ListBoxItem Content="Message2"></ListBoxItem>
+                    <ListBoxItem Content="Message3"></ListBoxItem>
+                    <ListBoxItem Content="Message4"></ListBoxItem>
+                    <ListBoxItem Content="Message5"></ListBoxItem>
+                    <ListBoxItem Content="Message6"></ListBoxItem>
                 </ListBox>
             </StackPanel>
             
