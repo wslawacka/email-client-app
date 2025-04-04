@@ -47,20 +47,104 @@
                 <!-- display mailboxes and their folders -->
                 <TreeView Padding="0, 20, 0, 0">
                     <TreeViewItem Header="mail1.gmail.com" Margin="0, 0, 0, 10">
-                        <TreeViewItem Header="Inbox"></TreeViewItem>
-                        <TreeViewItem Header="Starred"></TreeViewItem>
-                        <TreeViewItem Header="Sent mail"></TreeViewItem>
-                        <TreeViewItem Header="Draft"></TreeViewItem>
-                        <TreeViewItem Header="Spam"></TreeViewItem>
-                        <TreeViewItem Header="Trash"></TreeViewItem>
+                        <TreeViewItem>
+                            <TreeViewItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="assets/trash_icon.png"></Image>
+                                    <Label Content="Inbox"></Label>
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                        </TreeViewItem>
+                        <TreeViewItem>
+                            <TreeViewItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="assets/star_icon.png"></Image>
+                                    <Label Content="Starred"></Label>
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                        </TreeViewItem>
+                        <TreeViewItem>
+                            <TreeViewItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="assets/sent_icon.png"></Image>
+                                    <Label Content="Sent mail"></Label>
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                        </TreeViewItem>
+                        <TreeViewItem>
+                            <TreeViewItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="assets/draft_icon.png"></Image>
+                                    <Label Content="Draft"></Label>
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                        </TreeViewItem>
+                        <TreeViewItem>
+                            <TreeViewItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="assets/spam_icon.png"></Image>
+                                    <Label Content="Spam"></Label>
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                        </TreeViewItem>
+                        <TreeViewItem>
+                            <TreeViewItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="assets/trash_icon.png"></Image>
+                                    <Label Content="Trash"></Label>
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                        </TreeViewItem>
                     </TreeViewItem>
                     <TreeViewItem Header="mail2@gmail.com">
-                        <TreeViewItem Header="Inbox"></TreeViewItem>
-                        <TreeViewItem Header="Starred"></TreeViewItem>
-                        <TreeViewItem Header="Sent mail"></TreeViewItem>
-                        <TreeViewItem Header="Draft"></TreeViewItem>
-                        <TreeViewItem Header="Spam"></TreeViewItem>
-                        <TreeViewItem Header="Trash"></TreeViewItem>
+                        <TreeViewItem>
+                            <TreeViewItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="assets/trash_icon.png"></Image>
+                                    <Label Content="Inbox"></Label>
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                        </TreeViewItem>
+                        <TreeViewItem>
+                            <TreeViewItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="assets/star_icon.png"></Image>
+                                    <Label Content="Starred"></Label>
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                        </TreeViewItem>
+                        <TreeViewItem>
+                            <TreeViewItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="assets/sent_icon.png"></Image>
+                                    <Label Content="Sent mail"></Label>
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                        </TreeViewItem>
+                        <TreeViewItem>
+                            <TreeViewItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="assets/draft_icon.png"></Image>
+                                    <Label Content="Draft"></Label>
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                        </TreeViewItem>
+                        <TreeViewItem>
+                            <TreeViewItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="assets/spam_icon.png"></Image>
+                                    <Label Content="Spam"></Label>
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                        </TreeViewItem>
+                        <TreeViewItem>
+                            <TreeViewItem.Header>
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="assets/trash_icon.png"></Image>
+                                    <Label Content="Trash"></Label>
+                                </StackPanel>
+                            </TreeViewItem.Header>
+                        </TreeViewItem>
                     </TreeViewItem>
                 </TreeView>
             </StackPanel>

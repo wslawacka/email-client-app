@@ -58,10 +58,10 @@
 /Users/weronikaslawacka/Documents/human-computer-interaction/EmailClient/obj/Debug/net9.0/EmailClient.AssemblyInfoInputs.cache
 /Users/weronikaslawacka/Documents/human-computer-interaction/EmailClient/obj/Debug/net9.0/EmailClient.AssemblyInfo.cs
 /Users/weronikaslawacka/Documents/human-computer-interaction/EmailClient/obj/Debug/net9.0/EmailClient.csproj.CoreCompileInputs.cache
+/Users/weronikaslawacka/Documents/human-computer-interaction/EmailClient/obj/Debug/net9.0/EmailClient.sourcelink.json
 /Users/weronikaslawacka/Documents/human-computer-interaction/EmailClient/obj/Debug/net9.0/Avalonia/EmailClient.dll
 /Users/weronikaslawacka/Documents/human-computer-interaction/EmailClient/obj/Debug/net9.0/Avalonia/EmailClient.pdb
 /Users/weronikaslawacka/Documents/human-computer-interaction/EmailClient/obj/Debug/net9.0/refint/Avalonia/EmailClient.dll
 /Users/weronikaslawacka/Documents/human-computer-interaction/EmailClient/obj/Debug/net9.0/EmailCli.6855ED27.Up2Date
 /Users/weronikaslawacka/Documents/human-computer-interaction/EmailClient/obj/Debug/net9.0/EmailClient.genruntimeconfig.cache
 /Users/weronikaslawacka/Documents/human-computer-interaction/EmailClient/obj/Debug/net9.0/ref/EmailClient.dll
-/Users/weronikaslawacka/Documents/human-computer-interaction/EmailClient/obj/Debug/net9.0/EmailClient.sourcelink.json
