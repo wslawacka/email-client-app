@@ -13,6 +13,19 @@ public class Email : INotifyPropertyChanged
     private string _content = string.Empty;
     private string[] _attachments = Array.Empty<string>();
     private bool _isStarred = false;
+
+    public Email(DateTime date, ImportanceLevel importance, string sender, string[] recipients, string subject, 
+        string content, string[] attachments, bool isStarred)
+    {
+        Date = date;
+        Importance = importance;
+        Sender = sender;
+        Recipients = recipients;
+        Subject = subject;
+        Content = content;
+        Attachments = attachments;
+        IsStarred = isStarred;
+    }
     
     public event PropertyChangedEventHandler? PropertyChanged = null;
 
@@ -87,6 +100,11 @@ public class Email : INotifyPropertyChanged
             _isStarred = value; 
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("IsStarred"));
         }
+    }
+
+    public override string ToString()
+    {
+        return Subject;
     }
 
     public enum ImportanceLevel
