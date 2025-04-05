@@ -1,13 +1,39 @@
 <Styles xmlns="https://github.com/avaloniaui">
+    
+    <Style Selector="StackPanel.FoldersPanel">
+        <Setter Property="Background" Value="#DFDFDF"></Setter>
+    </Style>
     <Style Selector="TreeViewItem">
-        <Setter Property="Foreground" Value="Black"/> 
+        <Setter Property="Foreground" Value="#212121"/>
+    </Style>
+    <Style Selector="ListBox">
+        <Setter Property="Background" Value="Transparent"></Setter>
+        <Setter Property="Foreground" Value="#212121"></Setter>
+    </Style>
+    <Style Selector="TextBlock">
+        <Setter Property="Foreground" Value="#212121"></Setter>
+    </Style>
+    <Style Selector="Grid.MenuPanel">
+        <Setter Property="Background" Value="#A2C2E0"></Setter>
     </Style>
     <Style Selector="MenuItem">
-        <Setter Property="Foreground" Value="Black"/> 
-        <Setter Property="Margin" Value="0, 0, 10, 0"></Setter>
+        <Setter Property="Foreground" Value="#000000"></Setter>
     </Style>
-    <Style Selector="TextBlock.mail-content">
-        <Setter Property="Foreground" Value="Black"></Setter>
-        <Setter Property="Padding" Value="40, 20, 40, 0"></Setter>
+    <Style Selector="TextBox.MenuBox, ComboBox.MenuBox">
+        <Setter Property="Background" Value="#DCDCDC"></Setter>
+    </Style>
+    <Style Selector="StackPanel.MessagesPanel">
+        <Setter Property="Background" Value="#E9E9E9"></Setter>
+    </Style>
+    <!-- <Style Selector="MenuItem"> -->
+    <!--     <Setter Property="Foreground" Value="Black"/>  -->
+    <!--     <Setter Property="Margin" Value="0, 0, 10, 0"></Setter> -->
+    <!-- </Style> -->
+    <!-- <Style Selector="TextBlock.mail-content"> -->
+    <!--     <Setter Property="Foreground" Value="Black"></Setter> -->
+    <!--     <Setter Property="Padding" Value="40, 20, 40, 0"></Setter> -->
+    <!-- </Style> -->
+    <Style Selector="Window">
+        <Setter Property="Background" Value="#F5F5F5"/>
     </Style>
 </Styles>
