@@ -13,7 +13,7 @@ public class ViewModel : INotifyPropertyChanged
     {
         // initialize commands
         HandleDoubleClickOnMessage = new Command(MessageListBox_OnDoubleTapped);
-        HandleAddNewMailStatic = new Command(AddNewMailStatic);
+        HandleAddNewMailStatic = new Command(AddNewMailStatic, CanAddNewMailStatic);
         HandleDeleteMail = new Command(DeleteMail, CanDeleteMessage);
         HandleEditDraft = new Command(EditDraft, CanEditDraft);
         
@@ -39,11 +39,11 @@ public class ViewModel : INotifyPropertyChanged
                     new Email(DateTime.Now.AddDays(-3), Email.ImportanceLevel.High, "manager@example.com", 
                         new[] { "team@example.com" }, "Urgent Meeting", 
                         "We have an urgent meeting scheduled for tomorrow at 9 AM. It will be crucial to finalize the details for the new product launch. Your attendance is mandatory.", 
-                        Array.Empty<string>(), false),
+                        Array.Empty<string>(), true),
                     new Email(DateTime.Now.AddDays(-2), Email.ImportanceLevel.High, "admin@example.com", 
                         new[] { "everyone@example.com" }, "System Maintenance", 
                         "There will be scheduled system maintenance tonight from 11 PM to 1 AM. Please ensure all critical work is saved before that time. The downtime will affect several services, including email and file sharing.", 
-                        Array.Empty<string>(), false)
+                        Array.Empty<string>(), true)
                 }),
                 new EmailFolder("Sent", "assets/sent_icon.png", new ObservableCollection<Email>
                 {
@@ -109,11 +109,11 @@ public class ViewModel : INotifyPropertyChanged
                     new Email(DateTime.Now.AddDays(-3), Email.ImportanceLevel.High, "admin@example.com", 
                         new[] { "everyone@example.com" }, "New System Update", 
                         "The system will undergo a major update tonight, and services will be unavailable for several hours. Please make sure to save all your work before the update begins. We apologize for any inconvenience caused.", 
-                        Array.Empty<string>(), false),
+                        Array.Empty<string>(), true),
                     new Email(DateTime.Now.AddDays(-4), Email.ImportanceLevel.Normal, "manager@example.com", 
                         new[] { "team@example.com" }, "Team Meeting Scheduled", 
                         "We have scheduled a team meeting for tomorrow to discuss the next steps in the project. Please make sure you're prepared with updates for your respective sections. The meeting will start at 9 AM.", 
-                        Array.Empty<string>(), false)
+                        Array.Empty<string>(), true)
                 }),
                 new EmailFolder("Sent", "assets/sent_icon.png", new ObservableCollection<Email>
                 {
@@ -292,5 +292,11 @@ public class ViewModel : INotifyPropertyChanged
     private bool CanEditDraft(object? parameter)
     {
         return SelectedFolder != null && SelectedFolder.Name == "Draft" && SelectedMessage != null;
+    }
+
+    // determines whether the new static message can be added
+    private bool CanAddNewMailStatic(object? parameter)
+    {
+        return SelectedFolder != null;
     }
 }

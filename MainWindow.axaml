@@ -10,7 +10,8 @@
         x:DataType="emailClient:ViewModel"
         Title="EmailClient"
         MinWidth="880"
-        MinHeight="540">
+        MinHeight="540"
+        Name="Main">
 
     <!-- whole window layout -->
     <DockPanel>
@@ -68,7 +69,8 @@
                         </TreeDataTemplate>
                         <!-- folder Level -->
                         <TreeDataTemplate DataType="{x:Type emailClient:EmailFolder}" >
-                            <StackPanel>
+                            <StackPanel Name="FolderNamePanel">
+                                <Image Source="{Binding Icon}"></Image>
                                 <TextBlock Text="{Binding Name}"></TextBlock>
                             </StackPanel>
                         </TreeDataTemplate>
@@ -93,23 +95,25 @@
                     <!-- create the template for list item  -->
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Vertical" Name="MessagePreview">
-                                <Grid Name="MessagePreviewHeader">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="4*"></ColumnDefinition>
-                                        <ColumnDefinition Width="*"></ColumnDefinition>
-                                    </Grid.ColumnDefinitions>
+                            <Border Name="MessagePreviewBorder">
+                                <StackPanel Orientation="Vertical" Name="MessagePreview">
+                                    <Grid Name="MessagePreviewHeader">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="4*"></ColumnDefinition>
+                                            <ColumnDefinition Width="*"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
                                     
-                                    <TextBlock Grid.Column="0" Text="{Binding Sender}" TextWrapping="NoWrap"></TextBlock>
-                                    <Button Name="StarButton" Grid.Column="1" Classes.Starred="{Binding IsStarred}" 
-                                            Command="{Binding ToggleStar}">
-                                        <Image Source="assets/star_icon.png" Width="14" Height="14"></Image>
-                                    </Button>
-                                </Grid>
+                                        <TextBlock Grid.Column="0" Text="{Binding Sender}" TextWrapping="NoWrap"></TextBlock>
+                                        <Button Name="StarButton" Grid.Column="1" Classes.Starred="{Binding IsStarred}" 
+                                                Command="{Binding ToggleStar}">
+                                            <Image Source="{Binding StarImage}" Width="14" Height="14"></Image>
+                                        </Button>
+                                    </Grid>
                                 
-                                <TextBlock Text="{Binding Date}"></TextBlock>
-                                <TextBlock Text="{Binding Subject}"></TextBlock>
-                            </StackPanel>
+                                    <TextBlock Text="{Binding Date}"></TextBlock>
+                                    <TextBlock Text="{Binding Subject}"></TextBlock>
+                                </StackPanel>
+                            </Border>
                         </DataTemplate>
                         
                     </ListBox.ItemTemplate>

@@ -23,6 +23,29 @@
   </ItemGroup>
 
   <ItemGroup>
-    <AvaloniaResource Include="assets/**" />
+    <None Remove="assets\star_icon.png" />
+    <Content Include="assets\star_icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="assets\trash_icon.png" />
+    <Content Include="assets\trash_icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="assets\spam_icon.png" />
+    <Content Include="assets\spam_icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="assets\sent_icon.png" />
+    <Content Include="assets\sent_icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="assets\inbox_icon.png" />
+    <Content Include="assets\inbox_icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Remove="assets\draft_icon.png" />
+    <Content Include="assets\draft_icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 </Project>

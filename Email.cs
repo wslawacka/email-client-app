@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel;
+using Avalonia.Media.Imaging;
 
 namespace EmailClient;
 
@@ -101,6 +102,9 @@ public class Email : INotifyPropertyChanged
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("IsStarred"));
         }
     }
+    
+    //  returns a Bitmap object which is used to load and display the star icon image in the UI
+    public Bitmap StarImage => new Bitmap("assets/star_icon.png");
 
     public override string ToString()
     {
@@ -111,7 +115,7 @@ public class Email : INotifyPropertyChanged
     {
         IsStarred = !IsStarred;
     }
-
+    
     public enum ImportanceLevel
     {
         Low,

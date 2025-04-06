@@ -2,7 +2,7 @@
     
     <!-- GENERAL -->
     <!-- window -->
-    <Style Selector="Window">
+    <Style Selector="Window#Main">
         <Setter Property="Background" Value="#F5F5F5"/>
     </Style>
     <!-- text block -->
@@ -46,6 +46,11 @@
     <Style Selector="TreeView">
         <Setter Property="Padding" Value="0 20"></Setter>
     </Style>
+    <!-- folder name panel -->
+    <Style Selector="StackPanel#FolderNamePanel">
+        <Setter Property="Orientation" Value="Horizontal"></Setter>
+        <Setter Property="Spacing" Value="10"></Setter>
+    </Style>
     <!-- selected folder -->
     <Style Selector="TreeViewItem:selected /template/ Border">
         <Setter Property="Background" Value="#B0C4DE" />
@@ -53,28 +58,34 @@
     
     
     <!-- MESSAGES -->
-    <!-- messages' panel -->
+    <!-- message panel -->
     <Style Selector="StackPanel#MessagesPanel">
         <Setter Property="Background" Value="#E9E9E9"></Setter>
         <Setter Property="MinWidth" Value="200"></Setter>
     </Style>
-    <!-- messages' list -->
+    <!-- message list -->
     <Style Selector="ListBox">
         <Setter Property="Background" Value="Transparent"></Setter>
         <Setter Property="Foreground" Value="#212121"></Setter>
         <Setter Property="Padding" Value="0 20 0 0"></Setter>
     </Style>
-    <!-- messages' list's item -->
+    <!-- message list item -->
     <Style Selector="ListBoxItem">
-        <Setter Property="Padding" Value="20 10"></Setter>
+        <Setter Property="Padding" Value="20 10 20 0"></Setter>
     </Style>
     <!-- selected message -->
     <Style Selector="ListBoxItem:selected /template/ ContentPresenter">
-        <Setter Property="Background" Value="#D1D9E6"/>	
+        <Setter Property="Background" Value="#D6DDE9"/>	
     </Style>
     <!-- message preview -->
     <Style Selector="StackPanel#MessagePreview">
         <Setter Property="Spacing" Value="10"></Setter>
+    </Style>
+    <!-- message preview's border -->
+    <Style Selector="Border#MessagePreviewBorder">
+        <Setter Property="BorderBrush" Value="#D3D3D3"></Setter>
+        <Setter Property="BorderThickness" Value="0 0 0 1"></Setter>
+        <Setter Property="Padding" Value="0 0 0 10 "></Setter>
     </Style>
     <!-- message preview's header -->
     <Style Selector="Grid#MessagePreviewHeader > TextBlock">
@@ -82,7 +93,7 @@
     </Style>
     <!-- star button -->
     <Style Selector="Button.Starred">
-        <Setter Property="Background" Value="#f0dd9d"></Setter>
+        <Setter Property="Background" Value="#E8C1C5"></Setter>
     </Style>
     
     

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using Avalonia.Media.Imaging;
 
 namespace EmailClient;
 
@@ -13,7 +14,7 @@ public class EmailFolder : INotifyPropertyChanged
     public EmailFolder(string name, string icon, ObservableCollection<Email> emails)
     {
         Name = name;
-        Icon = icon;
+        IconPath = icon;
         Emails = emails;
     }
     
@@ -28,8 +29,7 @@ public class EmailFolder : INotifyPropertyChanged
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Name"));
         }
     }
-
-    public string Icon
+    public string IconPath
     {
         get { return _icon; }
         set
@@ -38,6 +38,10 @@ public class EmailFolder : INotifyPropertyChanged
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Icon"));
         }
     }
+    
+    // creates a new Bitmap object from the file path stored in IconPath
+    public Bitmap Icon => new Bitmap(IconPath);
+    
     public ObservableCollection<Email> Emails
     {
         get { return _emails; }
