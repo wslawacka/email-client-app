@@ -17,19 +17,5 @@ public partial class MainWindow : Window
     {
         this.Close();
     }
-
-    private async void MessageListBox_OnDoubleTapped(object? sender, TappedEventArgs e)
-    {
-        if (sender is ListBox tappedListBox 
-            && tappedListBox.SelectedItem is ListBoxItem tappedListBoxItem 
-            && tappedListBoxItem.Content is string messageSubject)
-        {
-            var box = MessageBoxManager
-                .GetMessageBoxStandard("Message Subject", $"You clicked on the message: {messageSubject}");
-
-            await box.ShowAsync();
-        }
-    }
-    
     
 }

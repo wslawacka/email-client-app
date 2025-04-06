@@ -9,9 +9,14 @@
     <Style Selector="ListBox">
         <Setter Property="Background" Value="Transparent"></Setter>
         <Setter Property="Foreground" Value="#212121"></Setter>
+        <Setter Property="Padding" Value="0 20 0 0"></Setter>
+    </Style>
+    <Style Selector="ListBoxItem">
+        <Setter Property="Padding" Value="20 10"></Setter>
     </Style>
     <Style Selector="TextBlock">
         <Setter Property="Foreground" Value="#212121"></Setter>
+        <Setter Property="TextWrapping" Value="Wrap"></Setter>
     </Style>
     <Style Selector="Grid.MenuPanel">
         <Setter Property="Background" Value="#A2C2E0"></Setter>
@@ -21,19 +26,32 @@
     </Style>
     <Style Selector="TextBox.MenuBox, ComboBox.MenuBox">
         <Setter Property="Background" Value="#DCDCDC"></Setter>
+        <Setter Property="BorderBrush" Value="Transparent"></Setter>
     </Style>
     <Style Selector="StackPanel.MessagesPanel">
         <Setter Property="Background" Value="#E9E9E9"></Setter>
     </Style>
-    <!-- <Style Selector="MenuItem"> -->
-    <!--     <Setter Property="Foreground" Value="Black"/>  -->
-    <!--     <Setter Property="Margin" Value="0, 0, 10, 0"></Setter> -->
-    <!-- </Style> -->
-    <!-- <Style Selector="TextBlock.mail-content"> -->
-    <!--     <Setter Property="Foreground" Value="Black"></Setter> -->
-    <!--     <Setter Property="Padding" Value="40, 20, 40, 0"></Setter> -->
-    <!-- </Style> -->
+    <Style Selector="TextBlock.MailBold">
+        <Setter Property="FontWeight" Value="Medium"></Setter>
+    </Style>
+    <Style Selector="ListBoxItem:selected /template/ ContentPresenter">
+        <Setter Property="Background" Value="#D1D9E6"/>	
+    </Style>
+    <Style Selector="StackPanel#MailContent">
+        <Setter Property="Margin" Value="20 30"></Setter>
+        <Setter Property="Spacing" Value="30"></Setter>
+    </Style>
+    <Style Selector="TreeView">
+        <Setter Property="Padding" Value="0 20"></Setter>
+    </Style>
     <Style Selector="Window">
         <Setter Property="Background" Value="#F5F5F5"/>
     </Style>
+    <Style Selector="MenuItem.Submenu">
+        <Setter Property="Background" Value="#DDE6F2"></Setter>
+    </Style>
+    <Style Selector="TreeViewItem:selected /template/ Border">
+        <Setter Property="Background" Value="#B0C4DE" />
+    </Style>
+    
 </Styles>

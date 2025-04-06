@@ -3,6 +3,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:emailClient="clr-namespace:EmailClient"
+        xmlns:ia="using:Avalonia.Xaml.Interactivity"
+        xmlns:ei="using:Avalonia.Xaml.Interactions.Core"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="EmailClient.MainWindow"
         x:DataType="emailClient:ViewModel"
@@ -18,17 +20,17 @@
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <!-- display the main menu of the application -->
-            <Menu Grid.Column="0" Padding="10,0, 0, 0">
+            <Menu Grid.Column="0">
                 <MenuItem Header="File">
-                    <MenuItem Name="Exit" Click="Exit_OnClick" Header="Exit"></MenuItem>
+                    <MenuItem Classes="Submenu" Name="Exit" Click="Exit_OnClick" Header="Exit"></MenuItem>
                 </MenuItem>
                 <MenuItem Header="View"></MenuItem>
                 <MenuItem Header="Message">
-                    <MenuItem Header="New static"></MenuItem>
-                    <MenuItem Header="Edit static"></MenuItem>
-                    <MenuItem Header="New"></MenuItem>
-                    <MenuItem Header="Edit"></MenuItem>
-                    <MenuItem Header="Delete"></MenuItem>
+                    <MenuItem Classes="Submenu" Header="New static"></MenuItem>
+                    <MenuItem Classes="Submenu" Header="Edit static"></MenuItem>
+                    <MenuItem Classes="Submenu" Header="New"></MenuItem>
+                    <MenuItem Classes="Submenu" Header="Edit"></MenuItem>
+                    <MenuItem Classes="Submenu" Header="Delete"></MenuItem>
                 </MenuItem>
                 <MenuItem Header="Help"></MenuItem>
             </Menu>
@@ -47,115 +49,143 @@
             
             <StackPanel Grid.Column="0" Classes="FoldersPanel">
                 <!-- display mailboxes and their folders -->
-                <TreeView Margin="0, 20, 0, 0">
-                    <TreeViewItem Header="mail1.gmail.com" Margin="0, 0, 0, 10">
-                        <TreeViewItem>
-                            <TreeViewItem.Header>
-                                <StackPanel Orientation="Horizontal">
-                                    <Image Source="assets/trash_icon.png"></Image>
-                                    <Label Content="Inbox"></Label>
-                                </StackPanel>
-                            </TreeViewItem.Header>
-                        </TreeViewItem>
-                        <TreeViewItem>
-                            <TreeViewItem.Header>
-                                <StackPanel Orientation="Horizontal">
-                                    <Image Source="assets/star_icon.png"></Image>
-                                    <Label Content="Starred"></Label>
-                                </StackPanel>
-                            </TreeViewItem.Header>
-                        </TreeViewItem>
-                        <TreeViewItem>
-                            <TreeViewItem.Header>
-                                <StackPanel Orientation="Horizontal">
-                                    <Image Source="assets/sent_icon.png"></Image>
-                                    <Label Content="Sent mail"></Label>
-                                </StackPanel>
-                            </TreeViewItem.Header>
-                        </TreeViewItem>
-                        <TreeViewItem>
-                            <TreeViewItem.Header>
-                                <StackPanel Orientation="Horizontal">
-                                    <Image Source="assets/draft_icon.png"></Image>
-                                    <Label Content="Draft"></Label>
-                                </StackPanel>
-                            </TreeViewItem.Header>
-                        </TreeViewItem>
-                        <TreeViewItem>
-                            <TreeViewItem.Header>
-                                <StackPanel Orientation="Horizontal">
-                                    <Image Source="assets/spam_icon.png"></Image>
-                                    <Label Content="Spam"></Label>
-                                </StackPanel>
-                            </TreeViewItem.Header>
-                        </TreeViewItem>
-                        <TreeViewItem>
-                            <TreeViewItem.Header>
-                                <StackPanel Orientation="Horizontal">
-                                    <Image Source="assets/trash_icon.png"></Image>
-                                    <Label Content="Trash"></Label>
-                                </StackPanel>
-                            </TreeViewItem.Header>
-                        </TreeViewItem>
-                    </TreeViewItem>
-                    <TreeViewItem Header="mail2@gmail.com">
-                        <TreeViewItem>
-                            <TreeViewItem.Header>
-                                <StackPanel Orientation="Horizontal">
-                                    <Image Source="assets/trash_icon.png"></Image>
-                                    <Label Content="Inbox"></Label>
-                                </StackPanel>
-                            </TreeViewItem.Header>
-                        </TreeViewItem>
-                        <TreeViewItem>
-                            <TreeViewItem.Header>
-                                <StackPanel Orientation="Horizontal">
-                                    <Image Source="assets/star_icon.png"></Image>
-                                    <Label Content="Starred"></Label>
-                                </StackPanel>
-                            </TreeViewItem.Header>
-                        </TreeViewItem>
-                        <TreeViewItem>
-                            <TreeViewItem.Header>
-                                <StackPanel Orientation="Horizontal">
-                                    <Image Source="assets/sent_icon.png"></Image>
-                                    <Label Content="Sent mail"></Label>
-                                </StackPanel>
-                            </TreeViewItem.Header>
-                        </TreeViewItem>
-                        <TreeViewItem>
-                            <TreeViewItem.Header>
-                                <StackPanel Orientation="Horizontal">
-                                    <Image Source="assets/draft_icon.png"></Image>
-                                    <Label Content="Draft"></Label>
-                                </StackPanel>
-                            </TreeViewItem.Header>
-                        </TreeViewItem>
-                        <TreeViewItem>
-                            <TreeViewItem.Header>
-                                <StackPanel Orientation="Horizontal">
-                                    <Image Source="assets/spam_icon.png"></Image>
-                                    <Label Content="Spam"></Label>
-                                </StackPanel>
-                            </TreeViewItem.Header>
-                        </TreeViewItem>
-                        <TreeViewItem>
-                            <TreeViewItem.Header>
-                                <StackPanel Orientation="Horizontal">
-                                    <Image Source="assets/trash_icon.png"></Image>
-                                    <Label Content="Trash"></Label>
-                                </StackPanel>
-                            </TreeViewItem.Header>
-                        </TreeViewItem>
-                    </TreeViewItem>
+                <!-- <TreeView> -->
+                <!--     <TreeViewItem Header="mail1.gmail.com"> -->
+                <!--         <TreeViewItem> -->
+                <!--             <TreeViewItem.Header> -->
+                <!--                 <StackPanel Orientation="Horizontal"> -->
+                <!--                     <Image Source="assets/trash_icon.png"></Image> -->
+                <!--                     <Label Content="Inbox"></Label> -->
+                <!--                 </StackPanel> -->
+                <!--             </TreeViewItem.Header> -->
+                <!--         </TreeViewItem> -->
+                <!--         <TreeViewItem> -->
+                <!--             <TreeViewItem.Header> -->
+                <!--                 <StackPanel Orientation="Horizontal"> -->
+                <!--                     <Image Source="assets/star_icon.png"></Image> -->
+                <!--                     <Label Content="Starred"></Label> -->
+                <!--                 </StackPanel> -->
+                <!--             </TreeViewItem.Header> -->
+                <!--         </TreeViewItem> -->
+                <!--         <TreeViewItem> -->
+                <!--             <TreeViewItem.Header> -->
+                <!--                 <StackPanel Orientation="Horizontal"> -->
+                <!--                     <Image Source="assets/sent_icon.png"></Image> -->
+                <!--                     <Label Content="Sent mail"></Label> -->
+                <!--                 </StackPanel> -->
+                <!--             </TreeViewItem.Header> -->
+                <!--         </TreeViewItem> -->
+                <!--         <TreeViewItem> -->
+                <!--             <TreeViewItem.Header> -->
+                <!--                 <StackPanel Orientation="Horizontal"> -->
+                <!--                     <Image Source="assets/draft_icon.png"></Image> -->
+                <!--                     <Label Content="Draft"></Label> -->
+                <!--                 </StackPanel> -->
+                <!--             </TreeViewItem.Header> -->
+                <!--         </TreeViewItem> -->
+                <!--         <TreeViewItem> -->
+                <!--             <TreeViewItem.Header> -->
+                <!--                 <StackPanel Orientation="Horizontal"> -->
+                <!--                     <Image Source="assets/spam_icon.png"></Image> -->
+                <!--                     <Label Content="Spam"></Label> -->
+                <!--                 </StackPanel> -->
+                <!--             </TreeViewItem.Header> -->
+                <!--         </TreeViewItem> -->
+                <!--         <TreeViewItem> -->
+                <!--             <TreeViewItem.Header> -->
+                <!--                 <StackPanel Orientation="Horizontal"> -->
+                <!--                     <Image Source="assets/trash_icon.png"></Image> -->
+                <!--                     <Label Content="Trash"></Label> -->
+                <!--                 </StackPanel> -->
+                <!--             </TreeViewItem.Header> -->
+                <!--         </TreeViewItem> -->
+                <!--     </TreeViewItem> -->
+                <!--     <TreeViewItem Header="mail2@gmail.com"> -->
+                <!--         <TreeViewItem> -->
+                <!--             <TreeViewItem.Header> -->
+                <!--                 <StackPanel Orientation="Horizontal"> -->
+                <!--                     <Image Source="assets/trash_icon.png"></Image> -->
+                <!--                     <Label Content="Inbox"></Label> -->
+                <!--                 </StackPanel> -->
+                <!--             </TreeViewItem.Header> -->
+                <!--         </TreeViewItem> -->
+                <!--         <TreeViewItem> -->
+                <!--             <TreeViewItem.Header> -->
+                <!--                 <StackPanel Orientation="Horizontal"> -->
+                <!--                     <Image Source="assets/star_icon.png"></Image> -->
+                <!--                     <Label Content="Starred"></Label> -->
+                <!--                 </StackPanel> -->
+                <!--             </TreeViewItem.Header> -->
+                <!--         </TreeViewItem> -->
+                <!--         <TreeViewItem> -->
+                <!--             <TreeViewItem.Header> -->
+                <!--                 <StackPanel Orientation="Horizontal"> -->
+                <!--                     <Image Source="assets/sent_icon.png"></Image> -->
+                <!--                     <Label Content="Sent mail"></Label> -->
+                <!--                 </StackPanel> -->
+                <!--             </TreeViewItem.Header> -->
+                <!--         </TreeViewItem> -->
+                <!--         <TreeViewItem> -->
+                <!--             <TreeViewItem.Header> -->
+                <!--                 <StackPanel Orientation="Horizontal"> -->
+                <!--                     <Image Source="assets/draft_icon.png"></Image> -->
+                <!--                     <Label Content="Draft"></Label> -->
+                <!--                 </StackPanel> -->
+                <!--             </TreeViewItem.Header> -->
+                <!--         </TreeViewItem> -->
+                <!--         <TreeViewItem> -->
+                <!--             <TreeViewItem.Header> -->
+                <!--                 <StackPanel Orientation="Horizontal"> -->
+                <!--                     <Image Source="assets/spam_icon.png"></Image> -->
+                <!--                     <Label Content="Spam"></Label> -->
+                <!--                 </StackPanel> -->
+                <!--             </TreeViewItem.Header> -->
+                <!--         </TreeViewItem> -->
+                <!--         <TreeViewItem> -->
+                <!--             <TreeViewItem.Header> -->
+                <!--                 <StackPanel Orientation="Horizontal"> -->
+                <!--                     <Image Source="assets/trash_icon.png"></Image> -->
+                <!--                     <Label Content="Trash"></Label> -->
+                <!--                 </StackPanel> -->
+                <!--             </TreeViewItem.Header> -->
+                <!--         </TreeViewItem> -->
+                <!--     </TreeViewItem> -->
+                <!-- </TreeView> -->
+                
+                <TreeView ItemsSource="{Binding Mailboxes}" SelectedItem="{Binding SelectedFolder}">
+                    <TreeView.DataTemplates>
+                        <!-- Mailbox Level -->
+                        <TreeDataTemplate DataType="{x:Type emailClient:Mailbox}" 
+                                          ItemsSource="{Binding Folders}">
+                            <TextBlock Text="{Binding Name}" />
+                        </TreeDataTemplate>
+
+                        <!-- Folder Level -->
+                        <TreeDataTemplate DataType="{x:Type emailClient:EmailFolder}" >
+                            <StackPanel Orientation="Horizontal">
+                                <!-- <Image Source="{Binding Icon}"></Image> -->
+                                <TextBlock Text="{Binding Name}"></TextBlock>
+                            </StackPanel>
+                        </TreeDataTemplate>
+                    </TreeView.DataTemplates>
                 </TreeView>
+
+
+                
             </StackPanel>
             
-            <StackPanel Grid.Column="1" Classes="MessagesPanel">
+            <StackPanel Grid.Column="1" Classes="MessagesPanel" MinWidth="200">
                 <!-- display a list of messages of the currently selected folder -->
-                <ListBox Margin="10, 20, 0, 0" ItemsSource="{Binding Messages}" 
+                <ListBox ItemsSource="{Binding SelectedFolder.Emails}" 
                          SelectedItem="{Binding SelectedMessage}" Name="MessageListBox" 
-                         DoubleTapped="MessageListBox_OnDoubleTapped">
+                         >
+                    <ia:Interaction.Behaviors>
+                        <ei:EventTriggerBehavior EventName="DoubleTapped">
+                            <ei:InvokeCommandAction 
+                                Command="{Binding HandleDoubleClickOnMessage}" 
+                                CommandParameter="{Binding SelectedItem, ElementName=MessageListBox}" />
+                        </ei:EventTriggerBehavior>
+                    </ia:Interaction.Behaviors>
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Vertical">
@@ -169,19 +199,19 @@
                 </ListBox>
             </StackPanel>
             
-            <StackPanel Orientation="Vertical" Grid.Column="2" Classes="mail-content">
+            <StackPanel Orientation="Vertical" Grid.Column="2" Name="MailContent">
                 <!-- display the content of selected mail -->
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Text="{Binding SelectedMessage.Sender}"></TextBlock>
-                    <TextBlock Grid.Column="1" Text="{Binding SelectedMessage.Date}"></TextBlock>
+                    <TextBlock Classes="MailBold" Grid.Column="0" Text="{Binding SelectedMessage.Sender}"></TextBlock>
+                    <TextBlock Classes="MailBold" Grid.Column="1" Text="{Binding SelectedMessage.Date}"></TextBlock>
                 </Grid>
-                
-                <TextBlock Text="{Binding SelectedMessage.Subject}"></TextBlock>
+                <TextBlock Text="{Binding SelectedMessage.Subject, StringFormat='Subject: {0}'}"></TextBlock>
                 <TextBlock Text="{Binding SelectedMessage.Content}"></TextBlock>
+                
             </StackPanel>
             
         </Grid>
