@@ -58,9 +58,8 @@
     </Style>
     
     <Style Selector="Button.Starred">
-        <Setter Property="Background" Value="#F7DC6F"></Setter>
+        <Setter Property="Background" Value="#f0dd9d"></Setter>
     </Style>
-    
     <Style Selector="StackPanel#MessagePreview">
         <Setter Property="Spacing" Value="10"></Setter>
     </Style>

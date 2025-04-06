@@ -9,7 +9,7 @@
         x:Class="EmailClient.MainWindow"
         x:DataType="emailClient:ViewModel"
         Title="EmailClient"
-        MinWidth="860"
+        MinWidth="880"
         MinHeight="540">
 
     <DockPanel>
@@ -27,7 +27,7 @@
                 <MenuItem Header="View"></MenuItem>
                 <MenuItem Header="Message">
                     <MenuItem Classes="Submenu" Header="New static" Command="{Binding HandleAddNewMailStatic}"></MenuItem>
-                    <MenuItem Classes="Submenu" Header="Edit static"></MenuItem>
+                    <MenuItem Classes="Submenu" Header="Edit static" Command="{Binding HandleEditDraft}"></MenuItem>
                     <MenuItem Classes="Submenu" Header="New"></MenuItem>
                     <MenuItem Classes="Submenu" Header="Edit"></MenuItem>
                     <MenuItem Classes="Submenu" Header="Delete" Command="{Binding HandleDeleteMail}"></MenuItem>
@@ -42,9 +42,9 @@
         
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
                 <ColumnDefinition Width="3*"></ColumnDefinition>
+                <ColumnDefinition Width="5*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             
             <StackPanel Grid.Column="0" Classes="FoldersPanel">

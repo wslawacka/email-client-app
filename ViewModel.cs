@@ -15,6 +15,7 @@ public class ViewModel : INotifyPropertyChanged
         HandleDoubleClickOnMessage = new Command(MessageListBox_OnDoubleTapped);
         HandleAddNewMailStatic = new Command(AddNewMailStatic);
         HandleDeleteMail = new Command(DeleteMail, CanDeleteMessage);
+        HandleEditDraft = new Command(EditDraft, CanEditDraft);
         
          Mailboxes = new ObservableCollection<Mailbox>
         {
@@ -164,6 +165,7 @@ public class ViewModel : INotifyPropertyChanged
     public ICommand HandleDoubleClickOnMessage { get; private set; }
     public ICommand HandleAddNewMailStatic { get; private set; }
     public ICommand HandleDeleteMail { get; private set; }
+    public ICommand HandleEditDraft { get; private set; }
     
     public ObservableCollection<Email> Messages
     {
@@ -272,11 +274,26 @@ public class ViewModel : INotifyPropertyChanged
             SelectedMessage = null;
         }
     }
+
+    private void EditDraft(object? parameter)
+    {
+        if (SelectedMessage != null)
+        {
+            SelectedMessage.Subject = "Edited Draft Message";
+            SelectedMessage.Content = "The content of the draft message has been edited.";
+        }
+        
+        
+    }
     
 
     private bool CanDeleteMessage(object? parameter)
     {
         return SelectedMessage != null;
     }
-    
+
+    private bool CanEditDraft(object? parameter)
+    {
+        return SelectedFolder != null && SelectedFolder.Name == "Draft" && SelectedMessage != null;
+    }
 }
