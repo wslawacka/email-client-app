@@ -107,6 +107,11 @@ public class Email : INotifyPropertyChanged
         return Subject;
     }
 
+    public void ToggleStar()
+    {
+        IsStarred = !IsStarred;
+    }
+
     public enum ImportanceLevel
     {
         Low,

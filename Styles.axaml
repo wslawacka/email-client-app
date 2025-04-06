@@ -21,6 +21,9 @@
     <Style Selector="Grid.MenuPanel">
         <Setter Property="Background" Value="#A2C2E0"></Setter>
     </Style>
+    <Style Selector="Menu">
+        <Setter Property="Padding" Value="10 0 0 0"></Setter>
+    </Style>
     <Style Selector="MenuItem">
         <Setter Property="Foreground" Value="#000000"></Setter>
     </Style>
@@ -54,4 +57,14 @@
         <Setter Property="Background" Value="#B0C4DE" />
     </Style>
     
+    <Style Selector="Button.Starred">
+        <Setter Property="Background" Value="#F7DC6F"></Setter>
+    </Style>
+    
+    <Style Selector="StackPanel#MessagePreview">
+        <Setter Property="Spacing" Value="10"></Setter>
+    </Style>
+    <Style Selector="Grid#MessagePreviewHeader > TextBlock">
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+    </Style>
 </Styles>
