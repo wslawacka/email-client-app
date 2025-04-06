@@ -9,6 +9,12 @@ public class Mailbox : INotifyPropertyChanged
     private string _name = string.Empty;    
     private ObservableCollection<EmailFolder> _folders = new ObservableCollection<EmailFolder>();
 
+    public Mailbox(string name, ObservableCollection<EmailFolder> folders)
+    {
+        Name = name;
+        Folders = folders;
+    }
+    
     public string Name
     {
         get { return _name; }
@@ -26,12 +32,6 @@ public class Mailbox : INotifyPropertyChanged
             _folders = value; 
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Folders"));
         }
-    }
-
-    public Mailbox(string name, ObservableCollection<EmailFolder> folders)
-    {
-        Name = name;
-        Folders = folders;
     }
     
     public event PropertyChangedEventHandler? PropertyChanged = null;

@@ -11,14 +11,16 @@ public class ViewModel : INotifyPropertyChanged
 {
     public ViewModel()
     {
-        
+        // initialize commands
         HandleDoubleClickOnMessage = new Command(MessageListBox_OnDoubleTapped);
         HandleAddNewMailStatic = new Command(AddNewMailStatic);
         HandleDeleteMail = new Command(DeleteMail, CanDeleteMessage);
         HandleEditDraft = new Command(EditDraft, CanEditDraft);
         
+        // create and populate example mailbox data
          Mailboxes = new ObservableCollection<Mailbox>
         {
+            // first mailbox
             new Mailbox("mail1@gmail.com", new ObservableCollection<EmailFolder>
             {
                 new EmailFolder("Inbox", "assets/inbox_icon.png", new ObservableCollection<Email>
@@ -88,7 +90,7 @@ public class ViewModel : INotifyPropertyChanged
                         Array.Empty<string>(), true)
                 })
             }),
-
+            // second mailbox
             new Mailbox("mail2@gmail.com", new ObservableCollection<EmailFolder>
             {
                 new EmailFolder("Inbox", "assets/inbox_icon.png", new ObservableCollection<Email>
@@ -162,11 +164,13 @@ public class ViewModel : INotifyPropertyChanged
          
     }
     
+    // commands bound to UI actions
     public ICommand HandleDoubleClickOnMessage { get; private set; }
     public ICommand HandleAddNewMailStatic { get; private set; }
     public ICommand HandleDeleteMail { get; private set; }
     public ICommand HandleEditDraft { get; private set; }
     
+    // observable collection for emails
     public ObservableCollection<Email> Messages
     {
         get { return _messages; }
@@ -176,7 +180,7 @@ public class ViewModel : INotifyPropertyChanged
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Messages"));
         }
     }
-
+    // observable collection for folders
     public ObservableCollection<EmailFolder> Folders
     {
         get { return _folders; }
@@ -186,7 +190,7 @@ public class ViewModel : INotifyPropertyChanged
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Folders"));
         }
     }
-
+    // observable collection for mailboxes
     public ObservableCollection<Mailbox> Mailboxes
     {
         get { return _mailboxes; }
@@ -197,13 +201,14 @@ public class ViewModel : INotifyPropertyChanged
         }
     }
 
+    // currently selected message
     public Email? SelectedMessage
     {
         get { return _selectedMessage; }
         set { _selectedMessage = value; 
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SelectedMessage")); }
     }
-
+    // currently selected folder
     public EmailFolder? SelectedFolder
     {
         get { return _selectedFolder; }
@@ -213,29 +218,19 @@ public class ViewModel : INotifyPropertyChanged
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SelectedFolder"));
         }
     }
-
-    public Mailbox? SelectedMailbox
-    {
-        get { return _selectedMailbox;  }
-        set
-        {
-            _selectedMailbox = value;
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SelectedMailbox"));
-        }
-    }
     
-    
+    // event used to notify the UI when a property value changes
     public event PropertyChangedEventHandler? PropertyChanged;
     
     private Email? _selectedMessage = null;
     private EmailFolder? _selectedFolder = null;
-    private Mailbox? _selectedMailbox = null;
-    
     
     private ObservableCollection<EmailFolder> _folders = new ObservableCollection<EmailFolder>();
     private ObservableCollection<Email> _messages = new ObservableCollection<Email>();
     private ObservableCollection<Mailbox> _mailboxes = new ObservableCollection<Mailbox>();
     
+    
+    // displays a message box with the subject when an email's preview is double-clicked
     private async void MessageListBox_OnDoubleTapped(object? parameter)
     {
         if (parameter is Email email)
@@ -247,6 +242,7 @@ public class ViewModel : INotifyPropertyChanged
         }
     }
 
+    // adds a static email to the currently selected folder
     private void AddNewMailStatic(object? parameter)
     {
         if (SelectedFolder != null)
@@ -266,6 +262,7 @@ public class ViewModel : INotifyPropertyChanged
         }
     }
 
+    // deletes the currently selected message
     private void DeleteMail(object? parameter)
     {
         if (SelectedMessage != null && SelectedFolder != null)
@@ -274,7 +271,8 @@ public class ViewModel : INotifyPropertyChanged
             SelectedMessage = null;
         }
     }
-
+    
+    // edits the currently selected draft message
     private void EditDraft(object? parameter)
     {
         if (SelectedMessage != null)
@@ -282,16 +280,15 @@ public class ViewModel : INotifyPropertyChanged
             SelectedMessage.Subject = "Edited Draft Message";
             SelectedMessage.Content = "The content of the draft message has been edited.";
         }
-        
-        
     }
     
-
+    // determines whether the selected message can be deleted
     private bool CanDeleteMessage(object? parameter)
     {
         return SelectedMessage != null;
     }
 
+    // determines whether the selected message can be edited (only in Draft folder)
     private bool CanEditDraft(object? parameter)
     {
         return SelectedFolder != null && SelectedFolder.Name == "Draft" && SelectedMessage != null;

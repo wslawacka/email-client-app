@@ -12,13 +12,17 @@
         MinWidth="880"
         MinHeight="540">
 
+    <!-- whole window layout -->
     <DockPanel>
-        <Grid DockPanel.Dock="Top" Height="40" Classes="MenuPanel">
+        
+        <!-- menu panel -->
+        <Grid DockPanel.Dock="Top" Name="MenuPanel">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="2*"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
+            
             <!-- display the main menu of the application -->
             <Menu Grid.Column="0">
                 <MenuItem Header="File">
@@ -26,11 +30,14 @@
                 </MenuItem>
                 <MenuItem Header="View"></MenuItem>
                 <MenuItem Header="Message">
-                    <MenuItem Classes="Submenu" Header="New static" Command="{Binding HandleAddNewMailStatic}"></MenuItem>
-                    <MenuItem Classes="Submenu" Header="Edit static" Command="{Binding HandleEditDraft}"></MenuItem>
+                    <MenuItem Classes="Submenu" Header="New static" 
+                              Command="{Binding HandleAddNewMailStatic}"></MenuItem>
+                    <MenuItem Classes="Submenu" Header="Edit static" 
+                              Command="{Binding HandleEditDraft}"></MenuItem>
                     <MenuItem Classes="Submenu" Header="New"></MenuItem>
                     <MenuItem Classes="Submenu" Header="Edit"></MenuItem>
-                    <MenuItem Classes="Submenu" Header="Delete" Command="{Binding HandleDeleteMail}"></MenuItem>
+                    <MenuItem Classes="Submenu" Header="Delete" 
+                              Command="{Binding HandleDeleteMail}"></MenuItem>
                 </MenuItem>
                 <MenuItem Header="Help"></MenuItem>
             </Menu>
@@ -40,6 +47,7 @@
             <ComboBox Classes="MenuBox" Grid.Column="2" MinWidth="160" VerticalAlignment="Center" Margin="0, 0, 40,0"></ComboBox>
         </Grid>
         
+        <!-- main layout -->
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="2*"></ColumnDefinition>
@@ -47,34 +55,34 @@
                 <ColumnDefinition Width="5*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             
+            <!-- folders' panel -->
             <StackPanel Grid.Column="0" Classes="FoldersPanel">
                 
+                <!-- display mailboxes and their folders -->
                 <TreeView ItemsSource="{Binding Mailboxes}" SelectedItem="{Binding SelectedFolder}">
                     <TreeView.DataTemplates>
-                        <!-- Mailbox Level -->
+                        <!-- mailbox Level -->
                         <TreeDataTemplate DataType="{x:Type emailClient:Mailbox}" 
                                           ItemsSource="{Binding Folders}">
                             <TextBlock Text="{Binding Name}" />
                         </TreeDataTemplate>
-
-                        <!-- Folder Level -->
+                        <!-- folder Level -->
                         <TreeDataTemplate DataType="{x:Type emailClient:EmailFolder}" >
-                            <StackPanel Orientation="Horizontal">
+                            <StackPanel>
                                 <TextBlock Text="{Binding Name}"></TextBlock>
                             </StackPanel>
                         </TreeDataTemplate>
                     </TreeView.DataTemplates>
                 </TreeView>
-
-
                 
             </StackPanel>
             
-            <StackPanel Grid.Column="1" Classes="MessagesPanel" MinWidth="200">
+            <!-- messages' panel -->
+            <StackPanel Grid.Column="1" Name="MessagesPanel">
                 <!-- display a list of messages of the currently selected folder -->
                 <ListBox ItemsSource="{Binding SelectedFolder.Emails}" 
-                         SelectedItem="{Binding SelectedMessage}" Name="MessageListBox" 
-                         >
+                         SelectedItem="{Binding SelectedMessage}" Name="MessageListBox">
+                    <!-- bind command handling double clik event -->
                     <ia:Interaction.Behaviors>
                         <ei:EventTriggerBehavior EventName="DoubleTapped">
                             <ei:InvokeCommandAction 
@@ -82,6 +90,7 @@
                                 CommandParameter="{Binding SelectedItem, ElementName=MessageListBox}" />
                         </ei:EventTriggerBehavior>
                     </ia:Interaction.Behaviors>
+                    <!-- create the template for list item  -->
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Vertical" Name="MessagePreview">
@@ -108,6 +117,7 @@
                 </ListBox>
             </StackPanel>
             
+            <!-- mail content's panel -->
             <StackPanel Orientation="Vertical" Grid.Column="2" Name="MailContent">
                 <!-- display the content of selected mail -->
                 <Grid>
@@ -115,14 +125,15 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
+                    
                     <TextBlock Classes="MailBold" Grid.Column="0" Text="{Binding SelectedMessage.Sender}"></TextBlock>
                     <TextBlock Classes="MailBold" Grid.Column="1" Text="{Binding SelectedMessage.Date}"></TextBlock>
                 </Grid>
+                
                 <TextBlock Text="{Binding SelectedMessage.Subject, StringFormat='Subject: {0}'}"></TextBlock>
                 <TextBlock Text="{Binding SelectedMessage.Content}"></TextBlock>
                 
             </StackPanel>
-            
         </Grid>
         </DockPanel>
     
