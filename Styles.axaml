@@ -1,14 +1,26 @@
 <Styles xmlns="https://github.com/avaloniaui">
     
     <!-- GENERAL -->
-    <!-- window -->
-    <Style Selector="Window#Main">
+    <!-- main window -->
+    <Style Selector="Window#Main, Window#AddNewMessage, Window#EditTheMessage">
         <Setter Property="Background" Value="#F5F5F5"/>
+        <Setter Property="Foreground" Value="#212121"></Setter>
     </Style>
+    
+    <Style Selector="Window#AddNewMessage Button, Window#EditTheMessage Button">
+        <Setter Property="Foreground" Value="#212121"></Setter>
+        <Setter Property="Background" Value="#A2C2E0"></Setter>
+    </Style>
+   
     <!-- text block -->
     <Style Selector="TextBlock">
         <Setter Property="Foreground" Value="#212121"></Setter>
         <Setter Property="TextWrapping" Value="Wrap"></Setter>
+    </Style>
+    
+    
+    <Style Selector="Window#AddNewMessage StackPanel.ButtonPanel">
+        <Setter Property="HorizontalAlignment" Value="Center"></Setter>
     </Style>
     
     

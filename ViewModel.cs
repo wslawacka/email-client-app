@@ -2,8 +2,10 @@ using System;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
+using Avalonia;
 using MsBox.Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.ApplicationLifetimes;
 
 namespace EmailClient;
 
@@ -13,9 +15,11 @@ public class ViewModel : INotifyPropertyChanged
     {
         // initialize commands
         HandleDoubleClickOnMessage = new Command(MessageListBox_OnDoubleTapped);
-        HandleAddNewMailStatic = new Command(AddNewMailStatic, CanAddNewMailStatic);
+        HandleAddNewMailStatic = new Command(AddNewMailStatic, CanAddNewMail);
+        HandleAddNewMail = new Command(OpenAddMessageCallback, CanAddNewMail);
         HandleDeleteMail = new Command(DeleteMail, CanDeleteMessage);
         HandleEditDraft = new Command(EditDraft, CanEditDraft);
+        HandleEditMail = new Command(OpenEditMessageCallback, CanEditMail);
         
         // create and populate example mailbox data
          Mailboxes = new ObservableCollection<Mailbox>
@@ -27,7 +31,7 @@ public class ViewModel : INotifyPropertyChanged
                 {
                     new Email(DateTime.Now, Email.ImportanceLevel.High, "alice@example.com", 
                         new[] { "bob@example.com" }, "Meeting Reminder", 
-                        "Just a quick reminder that we have a meeting scheduled for tomorrow at 10 AM. It will be a productive session to discuss upcoming projects. Make sure to bring your latest reports.", 
+                        "Just a quick reminder that we hav, e a meeting scheduled for tomorrow at 10 AM. It will be a productive session to discuss upcoming projects. Make sure to bring your latest reports.", 
                         Array.Empty<string>(), false),
                     new Email(DateTime.Now.AddDays(-1), Email.ImportanceLevel.Normal, "bob@example.com", 
                         new[] { "alice@example.com" }, "Project Update", 
@@ -167,8 +171,10 @@ public class ViewModel : INotifyPropertyChanged
     // commands bound to UI actions
     public ICommand HandleDoubleClickOnMessage { get; private set; }
     public ICommand HandleAddNewMailStatic { get; private set; }
+    public ICommand HandleAddNewMail { get; private set; }
     public ICommand HandleDeleteMail { get; private set; }
     public ICommand HandleEditDraft { get; private set; }
+    public ICommand HandleEditMail { get; private set; }
     
     // observable collection for emails
     public ObservableCollection<Email> Messages
@@ -208,6 +214,7 @@ public class ViewModel : INotifyPropertyChanged
         set { _selectedMessage = value; 
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("SelectedMessage")); }
     }
+    
     // currently selected folder
     public EmailFolder? SelectedFolder
     {
@@ -262,6 +269,33 @@ public class ViewModel : INotifyPropertyChanged
         }
     }
 
+    private async void OpenAddMessageCallback(object? obj)
+    {
+        var wnd = new AddMessage();
+        var applicationLifetime = Application.Current?.ApplicationLifetime as IClassicDesktopStyleApplicationLifetime;
+        var mainWindow = applicationLifetime?.MainWindow;
+        if (mainWindow != null)
+        {
+            await wnd.ShowDialog(mainWindow);
+            if (SelectedFolder != null && wnd.NewMessage != null)
+            {
+                SelectedFolder.Emails.Add(wnd.NewMessage);
+                SelectedMessage = wnd.NewMessage;
+            }
+        }
+    }
+
+    private void OpenEditMessageCallback(object? obj)
+    {
+        var wnd = new EditMessage(this);
+        var applicationLifetime = Application.Current?.ApplicationLifetime as IClassicDesktopStyleApplicationLifetime;
+        var mainWindow = applicationLifetime?.MainWindow;
+        if (mainWindow != null)
+        {
+            wnd.Show(mainWindow);
+        }
+    }
+
     // deletes the currently selected message
     private void DeleteMail(object? parameter)
     {
@@ -293,10 +327,17 @@ public class ViewModel : INotifyPropertyChanged
     {
         return SelectedFolder != null && SelectedFolder.Name == "Draft" && SelectedMessage != null;
     }
+    
+    // determines whether there is a selected message to be edited
+    private bool CanEditMail(object? parameter)
+    {
+        return SelectedMessage != null;
+    }
 
-    // determines whether the new static message can be added
-    private bool CanAddNewMailStatic(object? parameter)
+    // determines whether the new message can be added
+    private bool CanAddNewMail(object? parameter)
     {
         return SelectedFolder != null;
     }
+    
 }

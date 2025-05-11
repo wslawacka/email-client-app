@@ -35,8 +35,10 @@
                               Command="{Binding HandleAddNewMailStatic}"></MenuItem>
                     <MenuItem Classes="Submenu" Header="Edit static" 
                               Command="{Binding HandleEditDraft}"></MenuItem>
-                    <MenuItem Classes="Submenu" Header="New"></MenuItem>
-                    <MenuItem Classes="Submenu" Header="Edit"></MenuItem>
+                    <MenuItem Classes="Submenu" Header="New"
+                              Command="{Binding HandleAddNewMail}"></MenuItem>
+                    <MenuItem Classes="Submenu" Header="Edit" 
+                              Command="{Binding HandleEditMail}"></MenuItem>
                     <MenuItem Classes="Submenu" Header="Delete" 
                               Command="{Binding HandleDeleteMail}"></MenuItem>
                 </MenuItem>
@@ -84,7 +86,7 @@
                 <!-- display a list of messages of the currently selected folder -->
                 <ListBox ItemsSource="{Binding SelectedFolder.Emails}" 
                          SelectedItem="{Binding SelectedMessage}" Name="MessageListBox">
-                    <!-- bind command handling double clik event -->
+                    <!-- bind command handling double click event -->
                     <ia:Interaction.Behaviors>
                         <ei:EventTriggerBehavior EventName="DoubleTapped">
                             <ei:InvokeCommandAction 
@@ -130,10 +132,11 @@
                         <ColumnDefinition Width="*"></ColumnDefinition>
                     </Grid.ColumnDefinitions>
                     
-                    <TextBlock Classes="MailBold" Grid.Column="0" Text="{Binding SelectedMessage.Sender}"></TextBlock>
+                    <TextBlock Classes="MailBold" Grid.Column="0" Text="{Binding SelectedMessage.Sender, StringFormat='From: {0}'}"></TextBlock>
                     <TextBlock Classes="MailBold" Grid.Column="1" Text="{Binding SelectedMessage.Date}"></TextBlock>
                 </Grid>
                 
+                <TextBlock Text="{Binding SelectedMessage.RecipientsString, StringFormat='To: {0}'}"></TextBlock>
                 <TextBlock Text="{Binding SelectedMessage.Subject, StringFormat='Subject: {0}'}"></TextBlock>
                 <TextBlock Text="{Binding SelectedMessage.Content}"></TextBlock>
                 
