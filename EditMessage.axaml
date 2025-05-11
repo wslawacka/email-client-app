@@ -16,22 +16,42 @@
         Name="EditTheMessage"
         >
         <StackPanel Orientation="Vertical">
-                <StackPanel Orientation="Vertical">
-                        <DatePicker SelectedDate="{Binding SelectedMessage.Date}"></DatePicker>
-                        <TextBox Text="{Binding SelectedMessage.Sender}" Watermark="Sender"></TextBox>
-                        <TextBox Text="{Binding SelectedMessage.RecipientsString}" Watermark="Recipients"></TextBox>
-                        <TextBox Text="{Binding SelectedMessage.Subject}" Watermark="Subject"></TextBox>
-                        <ComboBox ItemsSource="{Binding SelectedMessage.Importance}" SelectedIndex="0">
-                                <ComboBoxItem Content="Importance"></ComboBoxItem>
-                                <ComboBoxItem Content="Low"></ComboBoxItem>
-                                <ComboBoxItem Content="Normal"></ComboBoxItem>
-                                <ComboBoxItem Content="High"></ComboBoxItem>
+                <StackPanel Orientation="Vertical" Classes="FormPanel">
+                        <TextBox Text="{Binding SelectedMessage.Sender}" Watermark="Sender" IsEnabled="{Binding IsEditable}"></TextBox>
+                        <TextBox Text="{Binding SelectedMessage.RecipientsString}" Watermark="Recipients" IsEnabled="{Binding IsEditable}"></TextBox>
+                        <TextBox Text="{Binding SelectedMessage.Subject}" Watermark="Subject" IsEnabled="{Binding IsEditable}"></TextBox>
+                        <ComboBox ItemsSource="{Binding ImportanceValues}" SelectedItem="{Binding SelectedMessage.Importance}" IsEnabled="{Binding IsEditable}">
                         </ComboBox>
-                        <TextBox Text="{Binding SelectedMessage.Content}"></TextBox>
+                        <ScrollViewer HorizontalScrollBarVisibility="Auto" Height="50">
+                                <TextBox Text="{Binding SelectedMessage.Content}" IsEnabled="{Binding IsEditable}" ></TextBox>
+                        </ScrollViewer>
+                        
+                        
+                        <StackPanel Orientation="Vertical" Margin="10">
+                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,5">
+                                        <TextBlock Text="Attachments:" VerticalAlignment="Center"/>
+                                        <Button Margin="10,0,0,0" Click="AddAttachment_Click" IsEnabled="{Binding IsEditable}">
+                                                <Image Source="avares://EmailClient/assets/attachment_icon.png" Width="14" Height="14"></Image>
+                                        </Button>
+                                </StackPanel>
+                        </StackPanel>
+                        <ItemsControl ItemsSource="{Binding SelectedMessage.Attachments}">
+                                <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                                <StackPanel Orientation="Horizontal" Margin="5">
+                                                        <TextBlock Text="{Binding FileName}" Width="250" />
+                                                        <Button Content="X"
+                                                                Name="DeleteAttachmentButton"
+                                                                Tag="{Binding .}"
+                                                                Click="RemoveAttachment_Click"/>
+                                                </StackPanel>
+                                        </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                        </ItemsControl>
                 
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Classes="ButtonPanel">
-                        
+                        <Button Content="OK" Click="OKButton_Click"></Button>
                 </StackPanel>
         </StackPanel>
         

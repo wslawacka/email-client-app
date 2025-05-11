@@ -84,7 +84,7 @@
             <!-- messages' panel -->
             <StackPanel Grid.Column="1" Name="MessagesPanel">
                 <!-- display a list of messages of the currently selected folder -->
-                <ListBox ItemsSource="{Binding SelectedFolder.Emails}" 
+                <ListBox ItemsSource="{Binding Messages}" 
                          SelectedItem="{Binding SelectedMessage}" Name="MessageListBox">
                     <!-- bind command handling double click event -->
                     <ia:Interaction.Behaviors>
@@ -139,6 +139,19 @@
                 <TextBlock Text="{Binding SelectedMessage.RecipientsString, StringFormat='To: {0}'}"></TextBlock>
                 <TextBlock Text="{Binding SelectedMessage.Subject, StringFormat='Subject: {0}'}"></TextBlock>
                 <TextBlock Text="{Binding SelectedMessage.Content}"></TextBlock>
+                
+                <!-- Attachments Section -->
+                <ItemsControl ItemsSource="{Binding SelectedMessage.Attachments}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal" Margin="5">
+                                <Image Source="avares://EmailClient/assets/attachment_icon.png"
+                                       Width="14" Height="14" Margin="0,0,5,0"/>
+                                <TextBlock Text="{Binding FileName}" Width="250" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
                 
             </StackPanel>
         </Grid>

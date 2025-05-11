@@ -1,26 +1,40 @@
 <Styles xmlns="https://github.com/avaloniaui">
     
     <!-- GENERAL -->
-    <!-- main window -->
+    <!-- windows -->
     <Style Selector="Window#Main, Window#AddNewMessage, Window#EditTheMessage">
         <Setter Property="Background" Value="#F5F5F5"/>
         <Setter Property="Foreground" Value="#212121"></Setter>
     </Style>
     
+    <!-- windows form panels -->
+    <Style Selector="Window#AddNewMessage StackPanel.FormPanel, Window#EditTheMessage StackPanel.FormPanel">
+        <Setter Property="Margin" Value="10, 20, 10, 0"></Setter>
+        <Setter Property="Spacing" Value="10"></Setter>
+    </Style>
+    
+    <!-- windows button panels -->
+    <Style Selector="Window#AddNewMessage StackPanel.ButtonPanel, Window#EditTheMessage StackPanel.ButtonPanel">
+        <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+        <Setter Property="Margin" Value="0, 20, 0, 20"></Setter>
+        <Setter Property="Spacing" Value="10"></Setter>
+    </Style>
+    
+    <!-- windows buttons -->
     <Style Selector="Window#AddNewMessage Button, Window#EditTheMessage Button">
         <Setter Property="Foreground" Value="#212121"></Setter>
         <Setter Property="Background" Value="#A2C2E0"></Setter>
+    </Style>
+    
+    <!-- windows combo box items -->
+    <Style Selector="Window#AddNewMessage ComboBoxItem, Window#EditTheMessage ComboBoxItem">
+        <Setter Property="Background" Value="White"></Setter>
     </Style>
    
     <!-- text block -->
     <Style Selector="TextBlock">
         <Setter Property="Foreground" Value="#212121"></Setter>
         <Setter Property="TextWrapping" Value="Wrap"></Setter>
-    </Style>
-    
-    
-    <Style Selector="Window#AddNewMessage StackPanel.ButtonPanel">
-        <Setter Property="HorizontalAlignment" Value="Center"></Setter>
     </Style>
     
     

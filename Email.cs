@@ -1,4 +1,5 @@
 using System;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using Avalonia.Media.Imaging;
@@ -11,19 +12,15 @@ public class Email : INotifyPropertyChanged
     private ImportanceLevel _importance = ImportanceLevel.Normal;
     private string _sender = string.Empty;
     private string[] _recipients = Array.Empty<string>();
-    private string _recipientsString = string.Empty;
     private string _subject = string.Empty;
     private string _content = string.Empty;
-    private string[] _attachments = Array.Empty<string>();
+    private ObservableCollection<Attachment> _attachments = new ObservableCollection<Attachment>();
     private bool _isStarred = false;
 
-    public Email()
-    {
-        
-    }
+    public Email(){}
 
     public Email(DateTime date, ImportanceLevel importance, string sender, string[] recipients, string subject, 
-        string content, string[] attachments, bool isStarred)
+        string content, ObservableCollection<Attachment> attachments, bool isStarred)
     {
         Date = date;
         Importance = importance;
@@ -71,7 +68,6 @@ public class Email : INotifyPropertyChanged
         set
         {
             _recipients = value; 
-            _recipientsString = string.Join(", ", value);
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Recipients"));
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("RecipientsString"));
         }
@@ -82,7 +78,6 @@ public class Email : INotifyPropertyChanged
         get { return string.Join(", ", Recipients); }
         set
         {
-            _recipientsString = value;
             _recipients = value.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
             
             Recipients = value.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
@@ -111,7 +106,7 @@ public class Email : INotifyPropertyChanged
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Content"));
         }
     }
-    public string[] Attachments
+    public ObservableCollection<Attachment> Attachments
     {
         get { return _attachments; }
         set

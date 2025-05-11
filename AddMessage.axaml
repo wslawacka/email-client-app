@@ -15,19 +15,41 @@
         Name="AddNewMessage"
         >
         <StackPanel Orientation="Vertical">
-                <StackPanel Orientation="Vertical">
-                        <TextBox Name="SenderTextBox" Text="{Binding NewMessage.Sender}" Watermark="Sender"></TextBox>
-                        <TextBox Name="RecipientsTextBox" Text="{Binding NewMessage.RecipientsString}" Watermark="Recipients"></TextBox>
-                        <TextBox Name="SubjectTextBox" Text="{Binding NewMessage.Subject}" Watermark="Subject"></TextBox>
-                        <ComboBox Name="ImportanceComboBox" ItemsSource="{Binding NewMessage.Importance}" SelectedIndex="0">
-                                <ComboBoxItem Content="Importance"></ComboBoxItem>
+                <StackPanel Orientation="Vertical" Classes="FormPanel">
+                        <TextBox Name="SenderTextBox" Watermark="Sender"></TextBox>
+                        <TextBox Name="RecipientsTextBox" Watermark="Recipients"></TextBox>
+                        <TextBox Name="SubjectTextBox" Watermark="Subject"></TextBox>
+                        <ComboBox Name="ImportanceComboBox" SelectedIndex="0">
                                 <ComboBoxItem Content="Low"></ComboBoxItem>
                                 <ComboBoxItem Content="Normal"></ComboBoxItem>
                                 <ComboBoxItem Content="High"></ComboBoxItem>
                         </ComboBox>
-                        <TextBox Name="ContentTextBox" Text="{Binding NewMessage.Content}" Watermark="Email content"></TextBox>
+                        <TextBox Name="ContentTextBox" Watermark="Email content"></TextBox>
                 
                 </StackPanel>
+                
+                
+                <StackPanel Orientation="Vertical" Margin="10">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,5">
+                                <TextBlock Text="Attachments:" VerticalAlignment="Center"/>
+                                <Button Margin="10,0,0,0" Click="AddAttachment_Click">
+                                        <Image Source="avares://EmailClient/assets/attachment_icon.png" Width="14" Height="14"></Image>
+                                </Button>
+                        </StackPanel>
+                </StackPanel>
+                
+                <ItemsControl ItemsSource="{Binding NewMessage.Attachments}">
+                        <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                        <StackPanel Orientation="Horizontal" Margin="10">
+                                                <TextBlock Text="{Binding FileName}" Width="250" />
+                                                <Button Content="X" Tag="{Binding}" Click="RemoveAttachment_Click"/>
+                                        </StackPanel>
+                                </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                </ItemsControl>
+                
+
                 <StackPanel Orientation="Horizontal" Classes="ButtonPanel">
                                 <Button Content="Send" Click="SendButton_Click"></Button>
                                 <Button Content="Save as Draft" Click="SaveDraftButton_Click"></Button>
