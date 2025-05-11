@@ -1,0 +1,39 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:emailClient="clr-namespace:EmailClient"
+        xmlns:ia="using:Avalonia.Xaml.Interactivity"
+        xmlns:ei="using:Avalonia.Xaml.Interactions.Core"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="EmailClient.EditMessage"
+        x:DataType="emailClient:ViewModel"
+        Title="Edit message"
+        MinWidth="600"
+        MaxWidth="600"
+        MinHeight="300"
+        SizeToContent="WidthAndHeight"
+        Name="EditTheMessage"
+        >
+        <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Vertical">
+                        <DatePicker SelectedDate="{Binding SelectedMessage.Date}"></DatePicker>
+                        <TextBox Text="{Binding SelectedMessage.Sender}" Watermark="Sender"></TextBox>
+                        <TextBox Text="{Binding SelectedMessage.RecipientsString}" Watermark="Recipients"></TextBox>
+                        <TextBox Text="{Binding SelectedMessage.Subject}" Watermark="Subject"></TextBox>
+                        <ComboBox ItemsSource="{Binding SelectedMessage.Importance}" SelectedIndex="0">
+                                <ComboBoxItem Content="Importance"></ComboBoxItem>
+                                <ComboBoxItem Content="Low"></ComboBoxItem>
+                                <ComboBoxItem Content="Normal"></ComboBoxItem>
+                                <ComboBoxItem Content="High"></ComboBoxItem>
+                        </ComboBox>
+                        <TextBox Text="{Binding SelectedMessage.Content}"></TextBox>
+                
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Classes="ButtonPanel">
+                        
+                </StackPanel>
+        </StackPanel>
+        
+        
+</Window>

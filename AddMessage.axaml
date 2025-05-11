@@ -1,0 +1,38 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:emailClient="clr-namespace:EmailClient"
+        xmlns:ia="using:Avalonia.Xaml.Interactivity"
+        xmlns:ei="using:Avalonia.Xaml.Interactions.Core"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="EmailClient.AddMessage"
+        x:DataType="emailClient:AddMessage"
+        Title="New message"
+        MinWidth="600"
+        MinHeight="300"
+        SizeToContent="WidthAndHeight"
+        Name="AddNewMessage"
+        >
+        <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Vertical">
+                        <TextBox Name="SenderTextBox" Text="{Binding NewMessage.Sender}" Watermark="Sender"></TextBox>
+                        <TextBox Name="RecipientsTextBox" Text="{Binding NewMessage.RecipientsString}" Watermark="Recipients"></TextBox>
+                        <TextBox Name="SubjectTextBox" Text="{Binding NewMessage.Subject}" Watermark="Subject"></TextBox>
+                        <ComboBox Name="ImportanceComboBox" ItemsSource="{Binding NewMessage.Importance}" SelectedIndex="0">
+                                <ComboBoxItem Content="Importance"></ComboBoxItem>
+                                <ComboBoxItem Content="Low"></ComboBoxItem>
+                                <ComboBoxItem Content="Normal"></ComboBoxItem>
+                                <ComboBoxItem Content="High"></ComboBoxItem>
+                        </ComboBox>
+                        <TextBox Name="ContentTextBox" Text="{Binding NewMessage.Content}" Watermark="Email content"></TextBox>
+                
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Classes="ButtonPanel">
+                                <Button Content="Send" Click="SendButton_Click"></Button>
+                                <Button Content="Save as Draft" Click="SaveDraftButton_Click"></Button>
+                </StackPanel>
+        </StackPanel>
+        
+        
+</Window>
