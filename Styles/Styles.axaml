@@ -1,0 +1,202 @@
+<Styles xmlns="https://github.com/avaloniaui">
+
+    <!-- Merge color resources -->
+    <Styles.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceInclude Source="Colors.axaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Styles.Resources>
+    
+    
+    <!-- window -->
+    <Style Selector="Window">
+        <Setter Property="Background" Value="{StaticResource BackgroundBaseColor}" />
+        <Setter Property="Foreground" Value="{StaticResource TextPrimaryColor}"></Setter>
+    </Style>
+    
+
+    <!-- form panel -->
+    <Style Selector="StackPanel.FormPanel">
+        <Setter Property="Margin" Value="10, 20, 10, 0"></Setter>
+        <Setter Property="Spacing" Value="10"></Setter>
+    </Style>
+    <!-- button panel -->
+    <Style Selector="StackPanel.ButtonPanel">
+        <Setter Property="HorizontalAlignment" Value="Center"></Setter>
+        <Setter Property="Margin" Value="0, 20, 0, 20"></Setter>
+        <Setter Property="Spacing" Value="10"></Setter>
+    </Style>
+    <!-- folders' panel -->
+    <Style Selector="StackPanel.FoldersPanel">
+        <Setter Property="Background" Value="{StaticResource BackgroundSecondaryColor}"></Setter>
+    </Style>
+    <!-- folder name panel -->
+    <Style Selector="StackPanel#FolderNamePanel">
+        <Setter Property="Orientation" Value="Horizontal"></Setter>
+        <Setter Property="Spacing" Value="10"></Setter>
+    </Style>
+    <!-- message panel -->
+    <Style Selector="StackPanel#MessagesPanel">
+        <Setter Property="Background" Value="{StaticResource BackgroundQuaternaryColor}"></Setter>
+        <Setter Property="MinWidth" Value="200"></Setter>
+    </Style>
+    <!-- message preview -->
+    <Style Selector="StackPanel#MessagePreview">
+        <Setter Property="Spacing" Value="10"></Setter>
+    </Style>
+    <!-- mail content's panel -->
+    <Style Selector="StackPanel#MailContent">
+        <Setter Property="Margin" Value="20 30"></Setter>
+        <Setter Property="Spacing" Value="30"></Setter>
+    </Style>
+    
+    
+    <!-- button -->
+    <Style Selector="Button">
+        <Setter Property="Foreground" Value="{StaticResource TextPrimaryColor}"></Setter>
+        <Setter Property="Background" Value="{StaticResource PrimaryColor}"></Setter>
+    </Style>
+    <!-- button hovered -->
+    <Style Selector="Button:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="{StaticResource PrimaryHoverColor}"></Setter>
+    </Style>
+    <!-- button pressed -->
+    <Style Selector="Button:pressed /template/ ContentPresenter">
+        <Setter Property="Background" Value="{StaticResource PrimaryActiveColor}"></Setter>
+    </Style>
+    <!-- star button -->
+    <Style Selector="Button#StarButton">
+        <Setter Property="Background" Value="{StaticResource BackgroundBaseColor}"></Setter>
+    </Style>
+    <!-- star button - starred -->
+    <Style Selector="Button.Starred">
+        <Setter Property="Background" Value="{StaticResource AccentSoftColor}"></Setter>
+    </Style>
+    <!-- reset button -->
+    <Style Selector="Button#ResetButton">
+        <Setter Property="Background" Value="{StaticResource AccentColor}"></Setter>
+        <Setter Property="Foreground" Value="White"></Setter>
+        <Setter Property="Padding" Value="12, 7"></Setter>
+    </Style>
+    
+
+    <!-- text block -->
+    <Style Selector="TextBlock">
+        <Setter Property="Foreground" Value="{StaticResource TextPrimaryColor}"></Setter>
+        <Setter Property="TextWrapping" Value="Wrap"></Setter>
+    </Style>
+    <!-- bold text -->
+    <Style Selector="TextBlock.MailBold">
+        <Setter Property="FontWeight" Value="Medium"></Setter>
+    </Style>
+
+    
+    <!-- menu panel -->
+    <Style Selector="Grid#MenuPanel">
+        <Setter Property="Background" Value="{StaticResource PrimaryColor}"></Setter>
+        <Setter Property="Height" Value="44"></Setter>
+    </Style>
+    <!-- menu -->
+    <Style Selector="Menu">
+        <Setter Property="Padding" Value="10 0 0 0"></Setter>
+    </Style>
+    <!-- menu item -->
+    <Style Selector="MenuItem">
+        <Setter Property="Foreground" Value="{StaticResource TextPrimaryColor}"></Setter>
+    </Style>
+    <!-- submenu item -->
+    <Style Selector="MenuItem.Submenu">
+        <Setter Property="Background" Value="{StaticResource BackgroundTertiaryColor}"></Setter>
+    </Style>
+
+    
+    <!-- folders' treeview -->
+    <Style Selector="TreeView">
+        <Setter Property="Padding" Value="0 20"></Setter>
+    </Style>
+    <!-- selected folder -->
+    <Style Selector="TreeViewItem:selected /template/ Border">
+        <Setter Property="Background" Value="{StaticResource SecondaryColor}" />
+    </Style>
+
+
+   
+    <!-- message list -->
+    <Style Selector="ListBox">
+        <Setter Property="Background" Value="Transparent"></Setter>
+        <Setter Property="Foreground" Value="{StaticResource TextPrimaryColor}"></Setter>
+        <Setter Property="Padding" Value="0 20 0 0"></Setter>
+    </Style>
+    <!-- message list item -->
+    <Style Selector="ListBoxItem">
+        <Setter Property="Padding" Value="20 10 20 0"></Setter>
+    </Style>
+    <!-- selected message -->
+    <Style Selector="ListBoxItem:selected /template/ ContentPresenter">
+        <Setter Property="Background" Value="#D6DDE9"/>	
+    </Style>
+    
+    
+    <!-- message preview's border -->
+    <Style Selector="Border#MessagePreviewBorder">
+        <Setter Property="BorderBrush" Value="#D3D3D3"></Setter>
+        <Setter Property="BorderThickness" Value="0 0 0 1"></Setter>
+        <Setter Property="Padding" Value="0 0 0 10 "></Setter>
+    </Style>
+    <!-- message preview's header -->
+    <Style Selector="Grid#MessagePreviewHeader > TextBlock">
+        <Setter Property="VerticalAlignment" Value="Center"></Setter>
+    </Style>
+    
+    
+    <!-- textbox and combobox -->
+    <Style Selector="TextBox, ComboBox">
+        <Setter Property="Background" Value="{StaticResource InputBackgroundColor}"/>
+        <Setter Property="TextBlock.Foreground" Value="{StaticResource TextPrimaryColor}"></Setter>
+    </Style>
+    <!-- textbox and combobox hovered -->
+    <Style Selector="TextBox:pointerover /template/ Border, ComboBox:pointerover /template/ Border">
+        <Setter Property="Background" Value="#E9EEF3"/>
+        <Setter Property="TextBlock.Foreground" Value="{StaticResource TextPrimaryColor}"></Setter>
+    </Style>
+    <!-- textbox -->
+    <Style Selector="TextBox">
+        <Setter Property="BorderBrush" Value="{StaticResource InputBorderColor}"/>
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="CornerRadius" Value="4"></Setter>
+    </Style>
+    <!-- textbox cursor -->
+    <Style Selector="TextBox">
+        <Setter Property="CaretBrush" Value="{StaticResource TextPrimaryColor}"></Setter>
+    </Style>
+    <!-- textbox watermark -->
+    <Style Selector="TextBox:pointerover /template/ TextBlock#PART_Watermark, TextBox:focus /template/ TextBlock#PART_Watermark">
+        <Setter Property="Foreground" Value="{StaticResource TextPrimaryColor}"/>
+    </Style>
+    <!-- textbox focused -->
+    <Style Selector="TextBox:focus /template/ Border">
+        <Setter Property="BorderBrush" Value="{StaticResource InputBorderColor}"/>
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Background" Value="{StaticResource InputBackgroundColor}"></Setter>
+        <Setter Property="TextBlock.Foreground" Value="{StaticResource TextPrimaryColor}"></Setter>
+        <Setter Property="CornerRadius" Value="4"></Setter>
+    </Style>
+    
+    
+    <!-- combobox item -->
+    <Style Selector="ComboBoxItem">
+        <Setter Property="Background" Value="{StaticResource BackgroundTertiaryColor}"></Setter>
+    </Style>
+    <!-- combobox item hovered -->
+    <Style Selector="ComboBoxItem:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="{StaticResource ComboBoxHoverColor}" />
+    </Style>
+    <!-- combobox item selected -->
+    <Style Selector="ComboBoxItem:selected /template/ ContentPresenter">
+        <Setter Property="Background" Value="{StaticResource SelectionColor}" />
+    </Style>
+    
+    
+</Styles>

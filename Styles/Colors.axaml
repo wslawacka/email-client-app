@@ -1,0 +1,32 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <!-- Base colors -->
+    <Color x:Key="PrimaryColor">#A2C2E0</Color>    
+    <Color x:Key="PrimaryHoverColor">#7FB1D6</Color>
+    <Color x:Key="PrimaryActiveColor">#516170</Color>
+    <Color x:Key="SecondaryColor">#B0C4DE</Color>       
+    <Color x:Key="AccentColor">#5F7397</Color>           
+    <Color x:Key="AccentSoftColor">#E8C1C5</Color>      
+    
+    <!-- Neutrals -->
+    <Color x:Key="BackgroundBaseColor">#F5F5F5</Color>    
+    <Color x:Key="BackgroundSecondaryColor">#DFDFDF</Color> 
+    <Color x:Key="BackgroundTertiaryColor">#DDE6F2</Color> 
+    <Color x:Key="BackgroundQuaternaryColor">#E9E9E9</Color>
+
+    <!-- Input states -->
+    <Color x:Key="InputBackgroundColor">#F5F8FB</Color>   
+    <Color x:Key="InputBorderColor">#D3D3D3</Color>
+    <Color x:Key="InputHoverColor">#E9EEF3</Color>  
+    <Color x:Key="ComboBoxHoverColor">#AAB6CC</Color>
+
+    <!-- Selection / Hover states -->
+    <Color x:Key="HoverColor">#AAB6CC</Color>
+    <Color x:Key="SelectionColor">#7F8FB0</Color>
+
+    <!-- Text -->
+    <Color x:Key="TextPrimaryColor">#212121</Color>     
+    
+</ResourceDictionary>
+

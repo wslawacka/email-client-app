@@ -33,7 +33,7 @@
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,5">
                                 <TextBlock Text="Attachments:" VerticalAlignment="Center"/>
                                 <Button Margin="10,0,0,0" Click="AddAttachment_Click">
-                                        <Image Source="avares://EmailClient/assets/attachment_icon.png" Width="14" Height="14"></Image>
+                                        <Image Source="avares://EmailClient/Assets/attachment_icon.png" Width="14" Height="14"></Image>
                                 </Button>
                         </StackPanel>
                 </StackPanel>

@@ -23,32 +23,34 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="assets\star_icon.png" />
-    <Content Include="assets\star_icon.png">
+    <None Remove="Assets\star_icon.png" />
+    <Content Include="Assets\star_icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Remove="assets\trash_icon.png" />
-    <Content Include="assets\trash_icon.png">
+    <None Remove="Assets\trash_icon.png" />
+    <Content Include="Assets\trash_icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Remove="assets\spam_icon.png" />
-    <Content Include="assets\spam_icon.png">
+    <None Remove="Assets\spam_icon.png" />
+    <Content Include="Assets\spam_icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Remove="assets\sent_icon.png" />
-    <Content Include="assets\sent_icon.png">
+    <None Remove="Assets\sent_icon.png" />
+    <Content Include="Assets\sent_icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Remove="assets\inbox_icon.png" />
-    <Content Include="assets\inbox_icon.png">
+    <None Remove="Assets\inbox_icon.png" />
+    <Content Include="Assets\inbox_icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <None Remove="assets\draft_icon.png" />
-    <Content Include="assets\draft_icon.png">
+    <None Remove="Assets\draft_icon.png" />
+    <Content Include="Assets\draft_icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
 
-    <AvaloniaResource Include="assets/attachment_icon.png" />
+    <AvaloniaResource Include="Assets\attachment_icon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AvaloniaResource>
 
   </ItemGroup>
   

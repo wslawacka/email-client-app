@@ -183,7 +183,9 @@ public class ViewModel : INotifyPropertyChanged
         set
         {
             _messages = value; 
+            _filteredMessages = new ObservableCollection<Email>(Messages);
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Messages"));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("FilteredMessages"));
         }
     }
     
@@ -268,6 +270,7 @@ public class ViewModel : INotifyPropertyChanged
             );
             
             SelectedFolder.Emails.Add(newEmail);
+            FilteredMessages.Add(newEmail);
         }
     }
 
@@ -282,6 +285,7 @@ public class ViewModel : INotifyPropertyChanged
             if (wnd.UserAction == AddMessage.MessageAction.Send)
             {
                 SelectedFolder?.Emails.Add(wnd.NewMessage);
+                FilteredMessages.Add(wnd.NewMessage);
             }
             else if (wnd.UserAction == AddMessage.MessageAction.SaveDraft)
             {
@@ -387,7 +391,7 @@ public class ViewModel : INotifyPropertyChanged
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(FilteredMessages)));
         }
     }
-    private ObservableCollection<Email> _filteredMessages = new();
+    private ObservableCollection<Email> _filteredMessages = new ObservableCollection<Email>();
 
     
     
@@ -428,6 +432,7 @@ public class ViewModel : INotifyPropertyChanged
         {
             _currentQuery = value;
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CurrentQuery)));
+            FilterEmails(_currentQuery, _currentCategory);
         }
     }
 
@@ -439,6 +444,7 @@ public class ViewModel : INotifyPropertyChanged
         {
             _currentCategory = value;
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CurrentCategory)));
+            FilterEmails(_currentQuery, _currentCategory);
         }
     }
 
