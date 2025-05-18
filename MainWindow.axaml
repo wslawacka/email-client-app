@@ -44,10 +44,8 @@
                 </MenuItem>
                 <MenuItem Header="Help"></MenuItem>
             </Menu>
-            <!-- search mails -->
-            <TextBox Classes="MenuBox" Grid.Column="1" MinWidth="190" Watermark="Search" VerticalAlignment="Center" Margin="40,0"></TextBox>
-            <!-- filter mails -->
-            <ComboBox Classes="MenuBox" Grid.Column="2" MinWidth="160" VerticalAlignment="Center" Margin="0, 0, 40,0"></ComboBox>
+            
+            <emailClient:FindMail Grid.Column="1" Grid.ColumnSpan="2" x:Name="FindMail"/>
         </Grid>
         
         <!-- main layout -->
@@ -84,7 +82,7 @@
             <!-- messages' panel -->
             <StackPanel Grid.Column="1" Name="MessagesPanel">
                 <!-- display a list of messages of the currently selected folder -->
-                <ListBox ItemsSource="{Binding Messages}" 
+                <ListBox ItemsSource="{Binding FilteredMessages}" 
                          SelectedItem="{Binding SelectedMessage}" Name="MessageListBox">
                     <!-- bind command handling double click event -->
                     <ia:Interaction.Behaviors>

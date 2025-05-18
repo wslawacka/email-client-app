@@ -42,8 +42,8 @@
                         <ItemsControl.ItemTemplate>
                                 <DataTemplate>
                                         <StackPanel Orientation="Horizontal" Margin="10">
-                                                <TextBlock Text="{Binding FileName}" Width="250" />
-                                                <Button Content="X" Tag="{Binding}" Click="RemoveAttachment_Click"/>
+                                                <TextBlock Text="{Binding FileName}" Width="250" VerticalAlignment="Center" />
+                                                <Button Content="X" Tag="{Binding}" VerticalAlignment="Center" Click="RemoveAttachment_Click"/>
                                         </StackPanel>
                                 </DataTemplate>
                         </ItemsControl.ItemTemplate>

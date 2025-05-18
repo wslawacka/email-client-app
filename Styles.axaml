@@ -134,4 +134,20 @@
         <Setter Property="FontWeight" Value="Medium"></Setter>
     </Style>
     
+    
+    <Style Selector="Button#ResetButton">
+        <Setter Property="Background" Value="#5F7397"></Setter>
+        <Setter Property="Padding" Value="14, 7"></Setter>
+    </Style>
+    <Style Selector="TextBox#SearchTextBox, ComboBox#CategoryComboBox">
+        <Setter Property="Foreground" Value="#5F7397"/>
+        <Setter Property="Background" Value="#F5F8FB"/>
+    </Style>
+    
+    <!-- dropdown list -->
+    <Style Selector="ComboBox#CategoryComboBox /template/ Popup ScrollViewer">
+        <Setter Property="Background" Value="#F5F8FB"/>
+    </Style>
+
+
 </Styles>

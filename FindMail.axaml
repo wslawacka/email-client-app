@@ -1,0 +1,39 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:EmailClient="clr-namespace:EmailClient"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="EmailClient.FindMail"
+             x:DataType="EmailClient:FindMail">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <TextBox Grid.Column="0"
+                 Margin="20,0"
+                 VerticalAlignment="Center"
+                 MinWidth="200"
+                 x:Name="SearchTextBox"
+                 Watermark="Enter search..."
+                 Text="{Binding Query, Mode=TwoWay}" />
+
+        <ComboBox Grid.Column="1"
+                  Margin="0,0,20,0"
+                  VerticalAlignment="Center"
+                  MinWidth="160"
+                  x:Name="CategoryComboBox"
+                  ItemsSource="{Binding Categories}"
+                  SelectedItem="{Binding SelectedCategory, Mode=TwoWay}" 
+                  SelectedIndex="0"/>
+
+        <Button Grid.Column="2"
+                Content="Reset"
+                Click="ResetButton_OnClick"
+                x:Name="ResetButton"/>
+
+    </Grid>
+</UserControl>

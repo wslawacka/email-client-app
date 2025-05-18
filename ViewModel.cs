@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -165,7 +166,6 @@ public class ViewModel : INotifyPropertyChanged
                 })
             })
         };
-         
     }
     
     // commands bound to UI actions
@@ -186,16 +186,7 @@ public class ViewModel : INotifyPropertyChanged
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Messages"));
         }
     }
-    // observable collection for folders
-    public ObservableCollection<EmailFolder> Folders
-    {
-        get { return _folders; }
-        set
-        {
-            _folders = value;
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Folders"));
-        }
-    }
+    
     // observable collection for mailboxes
     public ObservableCollection<Mailbox> Mailboxes
     {
@@ -228,10 +219,12 @@ public class ViewModel : INotifyPropertyChanged
             if (SelectedFolder != null)
             {
                 Messages = SelectedFolder.Emails;
+                FilteredMessages = new ObservableCollection<Email>(Messages);
             }
             else
             {
                 Messages = new ObservableCollection<Email>();
+                FilteredMessages = new ObservableCollection<Email>();
             }
         }
     }
@@ -242,7 +235,6 @@ public class ViewModel : INotifyPropertyChanged
     private Email? _selectedMessage = null;
     private EmailFolder? _selectedFolder = null;
     
-    private ObservableCollection<EmailFolder> _folders = new ObservableCollection<EmailFolder>();
     private ObservableCollection<Email> _messages = new ObservableCollection<Email>();
     private ObservableCollection<Mailbox> _mailboxes = new ObservableCollection<Mailbox>();
     
@@ -382,5 +374,74 @@ public class ViewModel : INotifyPropertyChanged
     private EditMessage? _editWnd = null;
     
     public bool IsEditable => SelectedFolder != null && SelectedFolder.Name == "Draft";
+    
+    
+    
+    
+    public ObservableCollection<Email> FilteredMessages
+    {
+        get => _filteredMessages;
+        set
+        {
+            _filteredMessages = value;
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(FilteredMessages)));
+        }
+    }
+    private ObservableCollection<Email> _filteredMessages = new();
+
+    
+    
+    
+    public void FilterEmails(string query, string category)
+    {
+        var filtered = Messages.Where(email =>
+            category.ToLower() switch
+            {
+                "subject" => email.Subject.Contains(query, StringComparison.OrdinalIgnoreCase),
+                "sender" => email.Sender.Contains(query, StringComparison.OrdinalIgnoreCase),
+                "recipient" => email.RecipientsString.Contains(query, StringComparison.OrdinalIgnoreCase),
+                _ => true
+            }).ToList();
+
+        FilteredMessages.Clear();
+        foreach (var email in filtered)
+        {
+            FilteredMessages.Add(email);
+        }
+    }
+
+    public void ResetSearch()
+    {
+        FilteredMessages.Clear();
+        foreach (var email in Messages)
+        {
+            FilteredMessages.Add(email);
+        }
+    }
+    
+    
+    private string _currentQuery = "";
+    public string CurrentQuery
+    {
+        get => _currentQuery;
+        set
+        {
+            _currentQuery = value;
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CurrentQuery)));
+        }
+    }
+
+    private string _currentCategory = "subject"; // default category
+    public string CurrentCategory
+    {
+        get => _currentCategory;
+        set
+        {
+            _currentCategory = value;
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(CurrentCategory)));
+        }
+    }
+
+
 
 }

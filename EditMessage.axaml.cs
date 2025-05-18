@@ -29,7 +29,7 @@ public partial class EditMessage : Window
                 return;
             }
 
-            if (vm != null && vm.SelectedMessage != null)
+            if ( vm.SelectedMessage != null)
             {
                 // check if the attachment exists and remove it
                 if (vm.SelectedMessage.Attachments.Contains(attachment))
@@ -60,7 +60,7 @@ public partial class EditMessage : Window
             foreach (var filePath in result)
             {
                 // add the file as an Attachment object to the collection
-                vm.SelectedMessage.Attachments.Add(new Attachment(filePath));
+                vm?.SelectedMessage?.Attachments.Add(new Attachment(filePath));
             }
         }
     }
