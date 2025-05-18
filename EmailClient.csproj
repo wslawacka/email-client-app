@@ -47,5 +47,9 @@
     <Content Include="assets\draft_icon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+
+    <AvaloniaResource Include="assets/attachment_icon.png" />
+
   </ItemGroup>
+  
 </Project>

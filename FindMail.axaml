@@ -6,34 +6,29 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="EmailClient.FindMail"
              x:DataType="EmailClient:FindMail">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
-
-        <TextBox Grid.Column="0"
-                 Margin="20,0"
+    
+    <StackPanel Orientation="Horizontal">
+        <TextBox
+                 Margin="0, 0, 10,0"
                  VerticalAlignment="Center"
-                 MinWidth="200"
+                 MinWidth="180"
                  x:Name="SearchTextBox"
                  Watermark="Enter search..."
                  Text="{Binding Query, Mode=TwoWay}" />
 
-        <ComboBox Grid.Column="1"
+        <ComboBox
                   Margin="0,0,20,0"
                   VerticalAlignment="Center"
-                  MinWidth="160"
+                  MinWidth="140"
                   x:Name="CategoryComboBox"
                   ItemsSource="{Binding Categories}"
                   SelectedItem="{Binding SelectedCategory, Mode=TwoWay}" 
                   SelectedIndex="0"/>
 
-        <Button Grid.Column="2"
+        <Button 
                 Content="Reset"
                 Click="ResetButton_OnClick"
                 x:Name="ResetButton"/>
 
-    </Grid>
+    </StackPanel>
 </UserControl>

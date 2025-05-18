@@ -9,7 +9,7 @@
         x:Class="EmailClient.MainWindow"
         x:DataType="emailClient:ViewModel"
         Title="EmailClient"
-        MinWidth="880"
+        MinWidth="900"
         MinHeight="540"
         Name="Main">
 
@@ -19,8 +19,8 @@
         <!-- menu panel -->
         <Grid DockPanel.Dock="Top" Name="MenuPanel">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="6*"></ColumnDefinition>
+                <ColumnDefinition Width="6*"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             
@@ -45,7 +45,7 @@
                 <MenuItem Header="Help"></MenuItem>
             </Menu>
             
-            <emailClient:FindMail Grid.Column="1" Grid.ColumnSpan="2" x:Name="FindMail"/>
+            <emailClient:FindMail Grid.Column="1" x:Name="FindMail" />
         </Grid>
         
         <!-- main layout -->

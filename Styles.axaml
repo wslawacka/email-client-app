@@ -42,7 +42,7 @@
     <!-- menu panel -->
     <Style Selector="Grid#MenuPanel">
         <Setter Property="Background" Value="#A2C2E0"></Setter>
-        <Setter Property="Height" Value="40"></Setter>
+        <Setter Property="Height" Value="44"></Setter>
     </Style>
     <!-- menu -->
     <Style Selector="Menu">
@@ -50,7 +50,7 @@
     </Style>
     <!-- menu item -->
     <Style Selector="MenuItem">
-        <Setter Property="Foreground" Value="#000000"></Setter>
+        <Setter Property="Foreground" Value="#212121"></Setter>
     </Style>
     <!-- submenu item -->
     <Style Selector="MenuItem.Submenu">
@@ -135,19 +135,49 @@
     </Style>
     
     
+    <!-- SEARCH CONTROL -->
+    <!-- textbox and combobox -->
+    <Style Selector="TextBox#SearchTextBox, ComboBox#CategoryComboBox">
+        <Setter Property="Background" Value="#F5F8FB"/>
+        <Setter Property="TextBlock.Foreground" Value="#212121"></Setter>
+    </Style>
+    <!-- textbox and combobox hovered -->
+    <Style Selector="TextBox:pointerover#SearchTextBox /template/ Border, ComboBox:pointerover#CategoryComboBox /template/ Border">
+        <Setter Property="Background" Value="#E9EEF3"/>
+        <Setter Property="TextBlock.Foreground" Value="#212121"></Setter>
+    </Style>
+    <!-- textbox cursor -->
+    <Style Selector="TextBox#SearchTextBox">
+        <Setter Property="CaretBrush" Value="#212121"></Setter>
+    </Style>
+    <!-- textbox watermark -->
+    <Style Selector="TextBox:pointerover#SearchTextBox /template/ TextBlock#PART_Watermark, TextBox:focus#SearchTextBox /template/ TextBlock#PART_Watermark">
+        <Setter Property="Foreground" Value="#212121"/>
+    </Style>
+    <!-- textbox focused -->
+    <Style Selector="TextBox:focus#SearchTextBox /template/ Border">
+        <Setter Property="BorderBrush" Value="#5F7397"/>
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Background" Value="#F5F8FB"></Setter>
+        <Setter Property="TextBlock.Foreground" Value="#212121"></Setter>
+        <Setter Property="CornerRadius" Value="4"></Setter>
+    </Style>
+    <!-- combobox item -->
+    <Style Selector="ComboBox#CategoryComboBox ComboBoxItem">
+        <Setter Property="Background" Value="#DDE6F2"/>
+    </Style>
+    <!-- combobox item hovered -->
+    <Style Selector="ComboBox#CategoryComboBox ComboBoxItem:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="#AAB6CC" />
+    </Style>
+    <!-- combobox item selected -->
+    <Style Selector="ComboBoxItem:selected /template/ ContentPresenter">
+        <Setter Property="Background" Value="#7F8FB0" />
+    </Style>
+    <!-- reset button -->
     <Style Selector="Button#ResetButton">
         <Setter Property="Background" Value="#5F7397"></Setter>
-        <Setter Property="Padding" Value="14, 7"></Setter>
+        <Setter Property="Padding" Value="12, 7"></Setter>
     </Style>
-    <Style Selector="TextBox#SearchTextBox, ComboBox#CategoryComboBox">
-        <Setter Property="Foreground" Value="#5F7397"/>
-        <Setter Property="Background" Value="#F5F8FB"/>
-    </Style>
-    
-    <!-- dropdown list -->
-    <Style Selector="ComboBox#CategoryComboBox /template/ Popup ScrollViewer">
-        <Setter Property="Background" Value="#F5F8FB"/>
-    </Style>
-
 
 </Styles>
